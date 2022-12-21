@@ -1,0 +1,159 @@
+.flip_book{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:  #4a1010;
+}
+.flip_book input{
+    display: none;
+}
+.flip_flip-book{
+    left: 12.5%;
+    width: 350px;
+    height: 500px;
+    position: relative;
+    perspective: 1500px;
+}
+.flip_flip{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: .5s;
+    color: #000;
+}
+.flip_p{
+    font-size: 14px;
+    line-height: 24px;
+}
+.flip_front{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(184, 173, 173);
+    backface-visibility: hidden;
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5) 0 2px 5px rgba(0, 0, 0, 0.5);
+    border: 2px solid yellow;
+    border-radius: 5%;
+}
+.flip_back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    transform: rotateY(180deg);
+    background-color: rgb(184, 173, 173);
+    backface-visibility: hidden;
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5) 0 2px 5px rgba(0, 0, 0, 0.5);
+    border: 2px solid yellow;
+    border-radius: 5%;
+}
+.flip_image{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 5%;
+}
+.one{
+    background-image: url("/public/uk.jpg");
+
+}
+.two{
+    background-image: url("/public/animal.jpg");
+}
+.three{
+    background-image: url("/public/bird.jpg");
+
+}
+.four{
+    background-image: url("/public/fish.jpg");
+}
+.five{
+    background-image: url("/public/butterfly.jpg");
+
+}
+.six{
+    background-image: url("/public/flower.jpg");
+}
+.seven{
+    background-image: url("/public/tree.jpg");
+
+}
+.eight{
+    background-image: url("/public/uk_flag.jpg");
+}
+.flip_next-btn{
+    position: absolute;
+    bottom: 13px;
+    right: 13px;
+    cursor: pointer;
+    color: #000;
+}
+.flip_back-btn{
+    position: absolute;
+    bottom: 13px;
+    right: 13px;
+    cursor: pointer;
+    color: #fff;
+}
+#flip_p1{
+    z-index: 7;
+}
+#flip_p2{
+    z-index: 6;
+}
+#flip_p3{
+    z-index: 5;
+}
+#flip_p4{
+    z-index: 4;
+}
+#flip_p5{
+    z-index: 3;
+}
+#flip_p6{
+    z-index: 2;
+}
+#flip_p7{
+    z-index: 1;
+}
+#flip_c1:checked ~ .flip_flip-book #flip_p1{
+    transform: rotateY(-180deg);
+    z-index: 1;
+}
+#flip_c2:checked ~ .flip_flip-book #flip_p2{
+    transform: rotateY(-180deg);
+    z-index: 2;
+}
+#flip_c3:checked ~ .flip_flip-book #flip_p3{
+    transform: rotateY(-180deg);
+    z-index: 3;
+}
+#flip_c4:checked ~ .flip_flip-book #flip_p4{
+    transform: rotateY(-180deg);
+    z-index: 4;
+}
+#flip_c5:checked ~ .flip_flip-book #flip_p5{
+    transform: rotateY(-180deg);
+    z-index: 5;
+}
+#flip_c6:checked ~ .flip_flip-book #flip_p6{
+    transform: rotateY(-180deg);
+    z-index: 6;
+}
+#flip_c7:checked ~ .flip_flip-book #flip_p7{
+    transform: rotateY(-180deg);
+    z-index: 7;
+}

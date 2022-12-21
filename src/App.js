@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css';
 import Home from './Home';
 import Rules from './Rules';
-import Quiz from './Quiz';
+import FlipBook from "./FlipBook";
 
 function App() {
   return (
@@ -10,7 +9,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/rules' element={<Rules />} />
-          <Route path='/quiz' element={<Quiz />} />
+          <Route path='/quiz' element={<FlipBook />} />
         </Routes>
       </BrowserRouter>
   );

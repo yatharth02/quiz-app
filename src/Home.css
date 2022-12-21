@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
 }
-.main{
+.home_main{
     position: relative;
     float: left;
     width: 100vw;
@@ -16,25 +16,25 @@
     -o-background-size: cover;
     background-size: cover;
 }
-.highway{
+.home_highway{
     position: absolute;
     width: 500%;
     left: 0;
     right: 0;
-    background: url("../public/raod.jpg") center;
+    background: url("../public/road.jpg") center;
     background-repeat: repeat-x;
     height: 250px;
     bottom: 0;
     background-size: contain;
     z-index: 1;
-    animation: road 10s linear infinite;
+    animation: home_highway 10s linear infinite;
 }
-@keyframes road {
+@keyframes home_highway {
     100%{
         transform: translateX(-3400px);
     }
 }
-.mount{
+.home_mount{
     position: absolute;
     width: 500%;
     left: 0;
@@ -44,14 +44,14 @@
     height: 350px;
     bottom: 250px;
     background-size: contain;
-    animation: mount 20s linear infinite;
+    animation: home_mount 20s linear infinite;
 }
-@keyframes mount {
+@keyframes home_mount {
     100%{
         transform: translateX(-3400px);
     }
 }
-.car{
+.home_car{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -60,11 +60,11 @@
     z-index: 2;
     bottom: 80px;
 }
-.car img{
+.home_car img{
     width: 100%;
-    animation: car 1s linear infinite;
+    animation: home_car 1s linear infinite;
 }
-@keyframes car {
+@keyframes home_car {
     100%{
         transform: translateY(-1px);
     }
@@ -75,7 +75,7 @@
         transform: translateY(-1px);
     }
 }
-.wheel{
+.home_wheel{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -84,27 +84,27 @@
     z-index: 3;
     bottom: 80px;
 }
-.back{
+.home_back{
     position: absolute;
     left: -158px;
     bottom: 30px;
     width: 171%;
 }
-.front{
+.home_front{
     position: absolute;
     left: 141px;
     bottom: 34px;
     width: 171%;
 }
-.wheel img{
-    animation: tyre 1s linear infinite;
+.home_wheel img{
+    animation: home_wheel 1s linear infinite;
 }
-@keyframes tyre {
+@keyframes home_wheel {
     100%{
         transform: rotate(360deg);
     }
 }
-.board{
+.home_board{
     font-size: 400%;
     font-family: 'Rubik Storm', cursive;
     font-family: 'Unbounded', cursive;
@@ -114,11 +114,10 @@
     text-align: center;
     text-shadow: whitesmoke 0.1px 5px 70px;
     background-image: repeating-radial-gradient(circle at center, red 40%, blue);
-    /* -webkit-background-clip: text; */
     background-clip: text;
     color: transparent;
 }
-.arrow{
+.home_arrow{
     position: absolute;
     left: 80%;
     transform: translateX(-50%);
@@ -126,7 +125,7 @@
     height: 20px;
     bottom: 419px;
 }
-.start{
+.home_start{
     font-size: 190%;
     position: absolute;
     left: 1266px;
@@ -136,7 +135,7 @@
     bottom: 374px;
     transform: rotate(-11deg);
 }
-.rule{
+.home_rule{
     font-size: 153%;
     position: absolute;
     left: 1271px;
@@ -146,7 +145,7 @@
     bottom: 327px;
     transform: rotate(8deg);
 }
-a{
+.home_a{
     text-decoration: none;
     color: whitesmoke;
     text-shadow: black 2px 2px 0.1px;
