@@ -1,0 +1,114 @@
+/* General Style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mcq_body {
+    height: 100vh;
+    width: 100%;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.mcq_wrapper {
+    height: 500px;
+    width: 350px;
+    border: 10px solid #61412D;
+    position: relative;
+    /* 3D */
+    perspective: 700px;
+}
+
+.mcq_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mcq_door {
+    background-color: #61412D;
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    /* inner layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#mcq_left-door {
+    top: 0;
+    left: 0;
+    border-right: 1px solid black;
+    /* transition */
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+#mcq_right-door {
+    top: 0;
+    right: 0;
+    border-left: 1px solid black;
+    /* transition */
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.mcq_shape {
+    border: 4px solid black;
+    width: 100px;
+    height: 130px;
+}
+
+.mcq_knob {
+    width: 10px;
+    height: 50px;
+    background-color: #D7DADE;
+    position: absolute;
+}
+
+#mcq_left-knob {
+    top: 50%;
+    right: 10px;
+}
+
+#mcq_right-knob {
+    top: 50%;
+    left: 10px;
+}
+
+/* Door swing effect */
+.mcq_wrapper:hover #mcq_left-door{
+    transform: rotateY(-140deg);
+}
+
+.mcq_wrapper:hover #mcq_right-door{
+    transform: rotateY(140deg);
+}
+.mcq_link{
+    position: absolute;
+    font-size: 16px;
+    background-color: #DB1F48;
+    color: #fff;
+    transition: background-color 1s;
+    padding: 15px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin-left: -74%;
+    margin-top: 120%;
+    text-decoration: none;
+}
+.mcq_link:hover {
+    background-color: #004369;
+  }
+.mcq_link:focus,
+.mcq_link:active {
+  background-color: black;
+  transition: none;
+}

@@ -1,152 +1,152 @@
 @charset "utf-8";
 
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-.home_main{
-    position: relative;
-    float: left;
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-    background: url("../public/cloud.png") center center no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+.home_main {
+  position: relative;
+  float: left;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  background: url("../public/home/cloud.png") center center no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
-.home_highway{
-    position: absolute;
-    width: 500%;
-    left: 0;
-    right: 0;
-    background: url("../public/road.jpg") center;
-    background-repeat: repeat-x;
-    height: 250px;
-    bottom: 0;
-    background-size: contain;
-    z-index: 1;
-    animation: home_highway 10s linear infinite;
+.home_highway {
+  position: absolute;
+  width: 500%;
+  left: 0;
+  right: 0;
+  background: url("../public/home/road.jpg") center;
+  background-repeat: repeat-x;
+  height: 250px;
+  bottom: 0;
+  background-size: contain;
+  z-index: 1;
+  animation: home_highway 10s linear infinite;
 }
 @keyframes home_highway {
-    100%{
-        transform: translateX(-3400px);
-    }
+  100% {
+    transform: translateX(-3400px);
+  }
 }
-.home_mount{
-    position: absolute;
-    width: 500%;
-    left: 0;
-    right: 0;
-    background: url("../public/ms.png");
-    background-repeat: repeat-x;
-    height: 350px;
-    bottom: 250px;
-    background-size: contain;
-    animation: home_mount 20s linear infinite;
+.home_mount {
+  position: absolute;
+  width: 500%;
+  left: 0;
+  right: 0;
+  background: url("../public/home/ms.png");
+  background-repeat: repeat-x;
+  height: 350px;
+  bottom: 250px;
+  background-size: contain;
+  animation: home_mount 20s linear infinite;
 }
 @keyframes home_mount {
-    100%{
-        transform: translateX(-3400px);
-    }
+  100% {
+    transform: translateX(-3400px);
+  }
 }
-.home_car{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 500px;
-    height: 200px;
-    z-index: 2;
-    bottom: 80px;
+.home_car {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 200px;
+  z-index: 2;
+  bottom: 80px;
 }
-.home_car img{
-    width: 100%;
-    animation: home_car 1s linear infinite;
+.home_car img {
+  width: 100%;
+  animation: home_car 1s linear infinite;
 }
 @keyframes home_car {
-    100%{
-        transform: translateY(-1px);
-    }
-    50%{
-        transform: translateY(1px);
-    }
-    0%{
-        transform: translateY(-1px);
-    }
+  100% {
+    transform: translateY(-1px);
+  }
+  50% {
+    transform: translateY(1px);
+  }
+  0% {
+    transform: translateY(-1px);
+  }
 }
-.home_wheel{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 20px;
-    z-index: 3;
-    bottom: 80px;
+.home_wheel {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 20px;
+  z-index: 3;
+  bottom: 80px;
 }
-.home_back{
-    position: absolute;
-    left: -158px;
-    bottom: 30px;
-    width: 171%;
+.home_back {
+  position: absolute;
+  left: -158px;
+  bottom: 30px;
+  width: 171%;
 }
-.home_front{
-    position: absolute;
-    left: 141px;
-    bottom: 34px;
-    width: 171%;
+.home_front {
+  position: absolute;
+  left: 141px;
+  bottom: 34px;
+  width: 171%;
 }
-.home_wheel img{
-    animation: home_wheel 1s linear infinite;
+.home_wheel img {
+  animation: home_wheel 1s linear infinite;
 }
 @keyframes home_wheel {
-    100%{
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-.home_board{
-    font-size: 400%;
-    font-family: 'Rubik Storm', cursive;
-    font-family: 'Unbounded', cursive;
-    position: absolute;
-    left: 220px;
-    bottom: 467px;
-    text-align: center;
-    text-shadow: whitesmoke 0.1px 5px 70px;
-    background-image: repeating-radial-gradient(circle at center, red 40%, blue);
-    background-clip: text;
-    color: transparent;
+.home_board {
+  font-size: 400%;
+  font-family: "Rubik Storm", cursive;
+  font-family: "Unbounded", cursive;
+  position: absolute;
+  left: 220px;
+  bottom: 467px;
+  text-align: center;
+  text-shadow: whitesmoke 0.1px 5px 70px;
+  background-image: repeating-radial-gradient(circle at center, red 40%, blue);
+  background-clip: text;
+  color: transparent;
 }
-.home_arrow{
-    position: absolute;
-    left: 80%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 20px;
-    bottom: 419px;
+.home_arrow {
+  position: absolute;
+  left: 80%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 20px;
+  bottom: 419px;
 }
-.home_start{
-    font-size: 190%;
-    position: absolute;
-    left: 1266px;
-    width: 50px;
-    height: 20px;
-    z-index: 4;
-    bottom: 374px;
-    transform: rotate(-11deg);
+.home_start {
+  font-size: 190%;
+  position: absolute;
+  left: 1266px;
+  width: 50px;
+  height: 20px;
+  z-index: 4;
+  bottom: 374px;
+  transform: rotate(-11deg);
 }
-.home_rule{
-    font-size: 153%;
-    position: absolute;
-    left: 1271px;
-    width: 50px;
-    height: 20px;
-    z-index: 4;
-    bottom: 327px;
-    transform: rotate(8deg);
+.home_rule {
+  font-size: 153%;
+  position: absolute;
+  left: 1271px;
+  width: 50px;
+  height: 20px;
+  z-index: 4;
+  bottom: 327px;
+  transform: rotate(8deg);
 }
-.home_a{
-    text-decoration: none;
-    color: whitesmoke;
-    text-shadow: black 2px 2px 0.1px;
+.home_a {
+  text-decoration: none;
+  color: whitesmoke;
+  text-shadow: black 2px 2px 0.1px;
 }

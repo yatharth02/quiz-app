@@ -1,198 +1,194 @@
-.flip_book{
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color:  #4a1010; */
-    background: url("../public/flip_bg.gif") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+.flip_book {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color:  #4a1010; */
+  background: url("../public/book/flip_bg.gif") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
-.flip_book input{
-    display: none;
+.flip_book input {
+  display: none;
 }
-.flip_flip-book{
-    left: 12.5%;
-    width: 350px;
-    height: 500px;
-    position: relative;
-    perspective: 1500px;
+.flip_flip-book {
+  left: 12.5%;
+  width: 350px;
+  height: 500px;
+  position: relative;
+  perspective: 1500px;
 }
-.flip_flip{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform-origin: left;
-    transform-style: preserve-3d;
-    transform: rotateY(0deg);
-    transition: .5s;
-    color: #000;
+.flip_flip {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition: 0.5s;
+  color: #000;
 }
-.flip_p{
-    font-size: 18px;
-    line-height: 30px;
-    text-align: center;
-    margin-left: 2%;
-    margin-right: 2%;
+.flip_p {
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  margin-left: 2%;
+  margin-right: 2%;
 }
-.flip_h1{
-    font-size: 40px;
-    line-height: 70px;
-    text-align: center;
+.flip_h1 {
+  font-size: 40px;
+  line-height: 70px;
+  text-align: center;
 }
-.flip_front{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgb(184, 173, 173);
-    backface-visibility: hidden;
-    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5) 0 2px 5px rgba(0, 0, 0, 0.5);
-    border: 2px solid yellow;
-    border-radius: 5%;
+.flip_front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgb(184, 173, 173);
+  backface-visibility: hidden;
+  box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5) 0 2px 5px rgba(0, 0, 0, 0.5);
+  border: 2px solid yellow;
+  border-radius: 5%;
 }
-.flip_back{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    transform: rotateY(180deg);
-    background-color: rgb(184, 173, 173);
-    backface-visibility: hidden;
-    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5) 0 2px 5px rgba(0, 0, 0, 0.5);
-    border: 2px solid yellow;
-    border-radius: 5%;
+.flip_back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  transform: rotateY(180deg);
+  background-color: rgb(184, 173, 173);
+  backface-visibility: hidden;
+  box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5) 0 2px 5px rgba(0, 0, 0, 0.5);
+  border: 2px solid yellow;
+  border-radius: 5%;
 }
-.flip_image{
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    border-radius: 5%;
+.flip_image {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 5%;
 }
-.flip_one{
-    background-image: url("/public/India.png");
-
+.flip_one {
+  background-image: url("/public/book/India.png");
 }
-.flip_two{
-    background-image: url("/public/animal.jpg");
+.flip_two {
+  background-image: url("/public/book/animal.jpg");
 }
-.flip_three{
-    background-image: url("/public/bird.jpg");
-
+.flip_three {
+  background-image: url("/public/book/bird.jpg");
 }
-.flip_four{
-    background-image: url("/public/fish.jpg");
+.flip_four {
+  background-image: url("/public/book/fish.jpg");
 }
-.flip_five{
-    background-image: url("/public/butterfly.jpg");
-
+.flip_five {
+  background-image: url("/public/book/butterfly.jpg");
 }
-.flip_six{
-    background-image: url("/public/flower.jpg");
+.flip_six {
+  background-image: url("/public/book/flower.jpg");
 }
-.flip_seven{
-    background-image: url("/public/tree.jpg");
-
+.flip_seven {
+  background-image: url("/public/book/tree.jpg");
 }
-.flip_eight{
-    background-image: url("/public/uk.jpg");
+.flip_eight {
+  background-image: url("/public/book/uk.jpg");
 }
-.flip_link{
-    position: absolute;
-    font-size: 16px;
-    background-color: #DB1F48;
-    color: #fff;
-    transition: background-color 1s;
-    padding: 15px;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    margin-left: 35%;
-    margin-top: 10%;
-    text-decoration: none;
+.flip_link {
+  position: absolute;
+  font-size: 16px;
+  background-color: #db1f48;
+  color: #fff;
+  transition: background-color 1s;
+  padding: 15px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin-left: 35%;
+  margin-top: 10%;
+  text-decoration: none;
 }
 .flip_link:hover {
-    background-color: #004369;
-  }
+  background-color: #004369;
+}
 .flip_link:focus,
 .flip_link:active {
   background-color: black;
   transition: none;
 }
-.flip_next-btn{
-    position: absolute;
-    bottom: 13px;
-    right: 13px;
-    cursor: pointer;
-    color: #000;
-    font-weight: bold;
-    font-size: 18px;
+.flip_next-btn {
+  position: absolute;
+  bottom: 13px;
+  right: 13px;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
 }
-.flip_back-btn{
-    position: absolute;
-    bottom: 13px;
-    right: 13px;
-    cursor: pointer;
-    color: #fff;
-    font-weight: bold;
-    font-size: 18px;
+.flip_back-btn {
+  position: absolute;
+  bottom: 13px;
+  right: 13px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
 }
-#flip_p1{
-    z-index: 7;
+#flip_p1 {
+  z-index: 7;
 }
-#flip_p2{
-    z-index: 6;
+#flip_p2 {
+  z-index: 6;
 }
-#flip_p3{
-    z-index: 5;
+#flip_p3 {
+  z-index: 5;
 }
-#flip_p4{
-    z-index: 4;
+#flip_p4 {
+  z-index: 4;
 }
-#flip_p5{
-    z-index: 3;
+#flip_p5 {
+  z-index: 3;
 }
-#flip_p6{
-    z-index: 2;
+#flip_p6 {
+  z-index: 2;
 }
-#flip_p7{
-    z-index: 1;
+#flip_p7 {
+  z-index: 1;
 }
-#flip_c1:checked ~ .flip_flip-book #flip_p1{
-    transform: rotateY(-180deg);
-    z-index: 1;
+#flip_c1:checked ~ .flip_flip-book #flip_p1 {
+  transform: rotateY(-180deg);
+  z-index: 1;
 }
-#flip_c2:checked ~ .flip_flip-book #flip_p2{
-    transform: rotateY(-180deg);
-    z-index: 2;
+#flip_c2:checked ~ .flip_flip-book #flip_p2 {
+  transform: rotateY(-180deg);
+  z-index: 2;
 }
-#flip_c3:checked ~ .flip_flip-book #flip_p3{
-    transform: rotateY(-180deg);
-    z-index: 3;
+#flip_c3:checked ~ .flip_flip-book #flip_p3 {
+  transform: rotateY(-180deg);
+  z-index: 3;
 }
-#flip_c4:checked ~ .flip_flip-book #flip_p4{
-    transform: rotateY(-180deg);
-    z-index: 4;
+#flip_c4:checked ~ .flip_flip-book #flip_p4 {
+  transform: rotateY(-180deg);
+  z-index: 4;
 }
-#flip_c5:checked ~ .flip_flip-book #flip_p5{
-    transform: rotateY(-180deg);
-    z-index: 5;
+#flip_c5:checked ~ .flip_flip-book #flip_p5 {
+  transform: rotateY(-180deg);
+  z-index: 5;
 }
-#flip_c6:checked ~ .flip_flip-book #flip_p6{
-    transform: rotateY(-180deg);
-    z-index: 6;
+#flip_c6:checked ~ .flip_flip-book #flip_p6 {
+  transform: rotateY(-180deg);
+  z-index: 6;
 }
-#flip_c7:checked ~ .flip_flip-book #flip_p7{
-    transform: rotateY(-180deg);
-    z-index: 7;
+#flip_c7:checked ~ .flip_flip-book #flip_p7 {
+  transform: rotateY(-180deg);
+  z-index: 7;
 }
