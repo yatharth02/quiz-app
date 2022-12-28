@@ -19,6 +19,25 @@ class McqTeam extends Component {
   render() {
     var teamNum = sessionStorage.getItem("teamNum");
     this.renderPosts(teamNum);
+
+    if (!sessionStorage.getItem("totalScore")) {
+      sessionStorage.setItem(
+        "totalScore",
+        JSON.stringify(
+          Array.from(
+            new Map([
+              ["Team-1", 0],
+              ["Team-2", 0],
+              ["Team-3", 0],
+              ["Team-4", 0],
+              ["Team-5", 0],
+              ["Team-6", 0],
+            ]).entries()
+          )
+        )
+      );
+    }
+
     return (
       <div className="mcq_body">
         <div className="mcq_wrapper">

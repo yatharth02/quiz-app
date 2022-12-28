@@ -3,19 +3,82 @@ import { Link } from "react-router-dom";
 import "./FlipBook.css";
 
 class FlipBook extends Component {
-  setTeamNum(params) {
-    sessionStorage.setItem("teamNum", params);
+  setTeamNum(round) {
+    sessionStorage.setItem(
+      "teamNum",
+      sessionStorage.getItem("teamNum") ? sessionStorage.getItem("teamNum") : 1
+    );
+
+    var roundsMap = new Map(JSON.parse(sessionStorage.getItem("rounds")));
+    roundsMap.set("Round-" + round, true);
+    sessionStorage.setItem(
+      "rounds",
+      JSON.stringify(Array.from(roundsMap.entries()))
+    );
+
+    sessionStorage.setItem("roundClear", false);
   }
 
   render() {
+    if (!sessionStorage.getItem("rounds")) {
+      sessionStorage.setItem(
+        "rounds",
+        JSON.stringify(
+          Array.from(
+            new Map([
+              ["Round-1", undefined],
+              ["Round-2", undefined],
+              ["Round-3", undefined],
+              ["Round-4", undefined],
+              ["Round-5", undefined],
+              ["Round-6", undefined],
+            ]).entries()
+          )
+        )
+      );
+    }
+
+    var roundsMap = new Map(JSON.parse(sessionStorage.getItem("rounds")));
+
     return (
       <div className="flip_book">
-        <input type="checkbox" id="flip_c1" />
-        <input type="checkbox" id="flip_c2" />
-        <input type="checkbox" id="flip_c3" />
-        <input type="checkbox" id="flip_c4" />
-        <input type="checkbox" id="flip_c5" />
-        <input type="checkbox" id="flip_c6" />
+        <input type="checkbox" defaultChecked />
+        <input
+          type="checkbox"
+          id="flip_c1"
+          checked={roundsMap.get("Round-1")}
+          readOnly
+        />
+        <input
+          type="checkbox"
+          id="flip_c2"
+          checked={roundsMap.get("Round-2")}
+          readOnly
+        />
+        <input
+          type="checkbox"
+          id="flip_c3"
+          checked={roundsMap.get("Round-3")}
+          readOnly
+        />
+        <input
+          type="checkbox"
+          id="flip_c4"
+          checked={roundsMap.get("Round-4")}
+          readOnly
+        />
+        <input
+          type="checkbox"
+          id="flip_c5"
+          checked={roundsMap.get("Round-5")}
+          readOnly
+        />
+        <input
+          type="checkbox"
+          id="flip_c6"
+          checked={roundsMap.get("Round-6")}
+          readOnly
+        />
         <input type="checkbox" id="flip_c7" />
         <div className="flip_flip-book">
           <div className="flip_flip" id="flip_p1">
@@ -57,8 +120,9 @@ class FlipBook extends Component {
                 className="flip_link"
                 to="/mcq"
                 onClick={() => {
-                  this.setTeamNum("1");
+                  this.setTeamNum(1);
                 }}
+                disabled={sessionStorage.getItem("roundClear") ? true : false}
               >
                 दौर 1 शुरू करे
               </Link>

@@ -40,25 +40,75 @@ function QuizDetails(props) {
   var quesNum = props.quesNum;
   var data = props.data;
   var totalData = props.totalData;
+  var teamNum = parseInt(sessionStorage.getItem("teamNum"));
 
   var [nxtQues, setNxtQues] = useState("");
+
+  var totalScoreMap = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
 
   return (
     <div className="mcq_rounds_main">
       {parseInt(quesNum) === 6 ? (
-        <>
-          <div className="mcq_rounds_final">
-            Total score {sessionStorage.getItem("score")}/
-            {totalData.map((val) => val.Marks).reduce((a, b) => a + b, 0)}
+        teamNum === 6 ? (
+          <div className="mcq_rounds_table_div">
+            <table className="mcq_rounds_table">
+              <caption className="mcq_rounds_caption">MCQ Round Score</caption>
+              <thead className="mcq_rounds_thead">
+                <tr>
+                  <th>Team</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody className="mcq_rounds_tbody">
+                <tr>
+                  <td>Team-1</td>
+                  <td>{totalScoreMap.get("Team-1")}</td>
+                </tr>
+                <tr>
+                  <td>Team-2</td>
+                  <td>{totalScoreMap.get("Team-2")}</td>
+                </tr>
+                <tr>
+                  <td>Team-3</td>
+                  <td>{totalScoreMap.get("Team-3")}</td>
+                </tr>
+                <tr>
+                  <td>Team-4</td>
+                  <td>{totalScoreMap.get("Team-4")}</td>
+                </tr>
+                <tr>
+                  <td>Team-5</td>
+                  <td>{totalScoreMap.get("Team-5")}</td>
+                </tr>
+                <tr>
+                  <td>Team-6</td>
+                  <td>{totalScoreMap.get("Team-6")}</td>
+                </tr>
+              </tbody>
+            </table>
+            <Link
+              className="mcq_rounds_link table"
+              to="/quiz"
+              onClick={() => postRoundCleanup(true)}
+            >
+              राउंड 2 के लिए जाएं
+            </Link>
           </div>
-          <Link
-            className="mcq_rounds_link final"
-            to="/mcq"
-            onClick={() => postRoundCleanup()}
-          >
-            टीम-{parseInt(sessionStorage.getItem("teamNum")) + 1} के लिए जाएं
-          </Link>
-        </>
+        ) : (
+          <>
+            <div className="mcq_rounds_final">
+              Total score {sessionStorage.getItem("score")} out of&nbsp;
+              {totalData.map((val) => val.Marks).reduce((a, b) => a + b, 0)}
+            </div>
+            <Link
+              className="mcq_rounds_link final"
+              to="/mcq"
+              onClick={() => postRoundCleanup(false)}
+            >
+              टीम-{teamNum + 1} के लिए जाएं
+            </Link>
+          </>
+        )
       ) : (
         <>
           <div className="mcq_rounds_top">
@@ -92,15 +142,28 @@ function QuizDetails(props) {
                 )}
               </div>
               {parseInt(quesNum) === 5 ? (
-                <Link
-                  className="mcq_rounds_link score"
-                  onClick={() => {
-                    sessionStorage.setItem("quesNum", parseInt(quesNum) + 1);
-                    window.location.reload();
-                  }}
-                >
-                  चेक स्कोर
-                </Link>
+                <>
+                  <Link
+                    className="mcq_rounds_link score"
+                    onClick={() => {
+                      var tNum = new Map(
+                        JSON.parse(sessionStorage.getItem("totalScore"))
+                      );
+                      tNum.set(
+                        "Team-" + teamNum,
+                        sessionStorage.getItem("score")
+                      );
+                      sessionStorage.setItem(
+                        "totalScore",
+                        JSON.stringify(Array.from(tNum.entries()))
+                      );
+                      sessionStorage.setItem("quesNum", parseInt(quesNum) + 1);
+                      window.location.reload();
+                    }}
+                  >
+                    चेक स्कोर
+                  </Link>
+                </>
               ) : (
                 <Link
                   className="mcq_rounds_link"
@@ -120,12 +183,18 @@ function QuizDetails(props) {
   );
 }
 
-function postRoundCleanup() {
+function postRoundCleanup(isOver) {
   sessionStorage.removeItem("quesNum");
-  sessionStorage.setItem(
-    "teamNum",
-    parseInt(sessionStorage.getItem("teamNum")) + 1
-  );
+  if (!isOver) {
+    sessionStorage.setItem(
+      "teamNum",
+      parseInt(sessionStorage.getItem("teamNum")) + 1
+    );
+  } else {
+    sessionStorage.removeItem("teamNum");
+    sessionStorage.removeItem("totalScore");
+    sessionStorage.setItem("roundClear", true);
+  }
   sessionStorage.removeItem("score");
   sessionStorage.removeItem("data");
   sessionStorage.removeItem("answers");
