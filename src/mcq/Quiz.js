@@ -63,7 +63,7 @@ function QuizDesign(props) {
       )
     );
 
-    delay(2000, () => {
+    delay(500, () => {
       if (ans === data["Choice-1(Correct Ans)"]) correctAns();
       else wrongAns();
     });
