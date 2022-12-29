@@ -44,9 +44,10 @@ function QuizDesign(props) {
   };
 
   const handleAnswer = (ans) => {
-    setNxtQues(ans === data["Choice-1(Correct Ans)"] ? "c" : "w");
+    const isCorrect = ans === data["Choice-1(Correct Ans)"];
+    setNxtQues(isCorrect ? "c" : "w");
 
-    if (ans === data["Choice-1(Correct Ans)"])
+    if (isCorrect)
       sessionStorage.setItem(
         "score",
         parseInt(sessionStorage.getItem("score")) + 5
@@ -57,14 +58,12 @@ function QuizDesign(props) {
 
     delay(1000, () =>
       setAnsClassName(
-        ans === data["Choice-1(Correct Ans)"]
-          ? "mcq_rounds_answer correct"
-          : "mcq_rounds_answer wrong"
+        isCorrect ? "mcq_rounds_answer correct" : "mcq_rounds_answer wrong"
       )
     );
 
     delay(500, () => {
-      if (ans === data["Choice-1(Correct Ans)"]) correctAns();
+      if (isCorrect) correctAns();
       else wrongAns();
     });
   };
@@ -80,6 +79,12 @@ function QuizDesign(props) {
           <div
             disabled={nxtQues ? true : false}
             key={index}
+            id={
+              ["w", "t"].includes(nxtQues) &&
+              answer === data["Choice-1(Correct Ans)"]
+                ? "mcq_rounds_id"
+                : null
+            }
             className={
               selectedAnswer === answer ? ansClassName : "mcq_rounds_answer"
             }

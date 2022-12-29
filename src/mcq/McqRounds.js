@@ -52,36 +52,38 @@ function QuizDetails(props) {
         teamNum === 6 ? (
           <div className="mcq_rounds_table_div">
             <table className="mcq_rounds_table">
-              <caption className="mcq_rounds_caption">MCQ Round Score</caption>
+              <caption className="mcq_rounds_caption">
+                बहुविकल्पीय राउण्ड स्कोर
+              </caption>
               <thead className="mcq_rounds_thead">
                 <tr>
-                  <th>Team</th>
-                  <th>Score</th>
+                  <th>टीम</th>
+                  <th>स्कोर</th>
                 </tr>
               </thead>
               <tbody className="mcq_rounds_tbody">
                 <tr>
-                  <td>Team-1</td>
+                  <td>टीम-1</td>
                   <td>{totalScoreMap.get("Team-1")}</td>
                 </tr>
                 <tr>
-                  <td>Team-2</td>
+                  <td>टीम-2</td>
                   <td>{totalScoreMap.get("Team-2")}</td>
                 </tr>
                 <tr>
-                  <td>Team-3</td>
+                  <td>टीम-3</td>
                   <td>{totalScoreMap.get("Team-3")}</td>
                 </tr>
                 <tr>
-                  <td>Team-4</td>
+                  <td>टीम-4</td>
                   <td>{totalScoreMap.get("Team-4")}</td>
                 </tr>
                 <tr>
-                  <td>Team-5</td>
+                  <td>टीम-5</td>
                   <td>{totalScoreMap.get("Team-5")}</td>
                 </tr>
                 <tr>
-                  <td>Team-6</td>
+                  <td>टीम-6</td>
                   <td>{totalScoreMap.get("Team-6")}</td>
                 </tr>
               </tbody>

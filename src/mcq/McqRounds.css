@@ -235,7 +235,7 @@ span.mcq_rounds_option {
 }
 .mcq_rounds_table {
   border-collapse: collapse;
-  width: 35%;
+  width: 45%;
 }
 .mcq_rounds_caption {
   font-weight: bold;
@@ -247,7 +247,7 @@ span.mcq_rounds_option {
 .mcq_rounds_thead {
   background-color: #333;
   color: white;
-  font-size: 30px;
+  font-size: 35px;
   text-transform: uppercase;
   letter-spacing: 2%;
 }
@@ -259,4 +259,7 @@ span.mcq_rounds_option {
 .mcq_rounds_link.table {
   margin-top: 29%;
   margin-left: -1%;
+}
+#mcq_rounds_id {
+  background: linear-gradient(#438a19, #438a19);
 }

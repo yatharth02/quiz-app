@@ -84,6 +84,7 @@ class FlipBook extends Component {
           <div className="flip_flip" id="flip_p1">
             <div className="flip_back">
               <img className="flip_image flip_two" />
+              <p className="flip_back_p">अल्पाइन कस्तूरी मृग</p>
               <label className="flip_back-btn" htmlFor="flip_c1">
                 पीछे
               </label>
@@ -98,6 +99,7 @@ class FlipBook extends Component {
           <div className="flip_flip" id="flip_p2">
             <div className="flip_back">
               <img className="flip_image flip_three" />
+              <p className="flip_back_p">हिमालयी मोनाल</p>
               <label className="flip_back-btn" htmlFor="flip_c2">
                 पीछे
               </label>
@@ -122,7 +124,9 @@ class FlipBook extends Component {
                 onClick={() => {
                   this.setTeamNum(1);
                 }}
-                disabled={sessionStorage.getItem("roundClear") ? true : false}
+                disabled={
+                  sessionStorage.getItem("roundClear") === true ? true : false
+                }
               >
                 दौर 1 शुरू करे
               </Link>
@@ -134,6 +138,7 @@ class FlipBook extends Component {
           <div className="flip_flip" id="flip_p3">
             <div className="flip_back">
               <img className="flip_image flip_four" />
+              <p className="flip_back_p">सुनहरी महसीर</p>
               <label className="flip_back-btn" htmlFor="flip_c3">
                 पीछे
               </label>
@@ -162,6 +167,7 @@ class FlipBook extends Component {
           <div className="flip_flip" id="flip_p4">
             <div className="flip_back">
               <img className="flip_image flip_five" />
+              <p className="flip_back_p">चीनी मयूर काला मख़रूती पन्ना</p>
               <label className="flip_back-btn" htmlFor="flip_c4">
                 पीछे
               </label>
@@ -187,6 +193,7 @@ class FlipBook extends Component {
           <div className="flip_flip" id="flip_p5">
             <div className="flip_back">
               <img className="flip_image flip_six" />
+              <p className="flip_back_p">ब्रह्म कमल</p>
               <label className="flip_back-btn" htmlFor="flip_c5">
                 पीछे
               </label>
@@ -213,6 +220,7 @@ class FlipBook extends Component {
           <div className="flip_flip" id="flip_p6">
             <div className="flip_back">
               <img className="flip_image flip_seven" />
+              <p className="flip_back_p">बुरांस</p>
               <label className="flip_back-btn" htmlFor="flip_c6">
                 पीछे
               </label>
