@@ -44,7 +44,7 @@ function QuizDesign(props) {
   };
 
   const handleAnswer = (ans) => {
-    const isCorrect = ans === data["Choice-1(Correct Ans)"];
+    const isCorrect = ans == data["Choice-1(Correct Ans)"];
     setNxtQues(isCorrect ? "c" : "w");
 
     if (isCorrect)
@@ -81,12 +81,12 @@ function QuizDesign(props) {
             key={index}
             id={
               ["w", "t"].includes(nxtQues) &&
-              answer === data["Choice-1(Correct Ans)"]
+              answer == data["Choice-1(Correct Ans)"]
                 ? "mcq_rounds_id"
                 : null
             }
             className={
-              selectedAnswer === answer ? ansClassName : "mcq_rounds_answer"
+              selectedAnswer == answer ? ansClassName : "mcq_rounds_answer"
             }
             onClick={() => handleAnswer(answer)}
           >

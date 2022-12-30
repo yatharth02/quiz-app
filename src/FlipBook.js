@@ -125,7 +125,7 @@ class FlipBook extends Component {
                   this.setTeamNum(1);
                 }}
                 disabled={
-                  sessionStorage.getItem("roundClear") === true ? true : false
+                  sessionStorage.getItem("roundClear") === "true" ? true : false
                 }
               >
                 दौर 1 शुरू करे
@@ -156,7 +156,16 @@ class FlipBook extends Component {
                 <br />
                 अधिकतम 70 अंक।
               </p>
-              <Link className="flip_link" to="/">
+              <Link
+                className="flip_link"
+                to="/visual"
+                onClick={() => {
+                  this.setTeamNum(2);
+                }}
+                disabled={
+                  sessionStorage.getItem("roundClear") === true ? true : false
+                }
+              >
                 दौर 2 शुरू करे
               </Link>
               <label className="flip_next-btn" htmlFor="flip_c3">
