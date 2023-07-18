@@ -5,7 +5,7 @@ import "./VisualTeam.css";
 
 class VisualTeam extends Component {
   renderPosts = async (teamNum) => {
-    var res = await readData("Team-" + teamNum, "MCQ Round");
+    var res = await readData("Team-" + teamNum, "Visual Round");
     sessionStorage.setItem("data", JSON.stringify(res));
   };
 
@@ -49,7 +49,7 @@ class VisualTeam extends Component {
           <div className="visual_curtains">
             <Link
               className="visual_link"
-              to="/mcq_round"
+              to="/visual_round"
               onClick={() => {
                 this.setQuesNum();
               }}

@@ -1,11 +1,9 @@
 import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
-import Quiz from "./McqQuiz";
-import Timer from "./McqTimer";
-import { shuffleArrayToString } from "../Helper";
-import "./McqRounds.css";
+import Timer from "../mcq/McqTimer";
+import Quiz from "../mcq/McqQuiz";
 
-class McqRounds extends Component {
+class VisualRounds extends Component {
   render() {
     var quesNum = sessionStorage.getItem("quesNum");
 
@@ -16,22 +14,13 @@ class McqRounds extends Component {
           ? {}
           : totalData.filter((data) => data["Q.No."] === "Q" + quesNum)[0];
 
-      sessionStorage.setItem(
-        "answers",
-        shuffleArrayToString([
-          data["Choice-1(Correct Ans)"],
-          data["Choice-2"],
-          data["Choice-3"],
-          data["Choice-4"],
-        ])
-      );
       if (parseInt(quesNum) === 1) sessionStorage.setItem("score", 0);
 
       return (
         <QuizDetails quesNum={quesNum} data={data} totalData={totalData} />
       );
     } else {
-      window.location.replace("/mcq");
+      window.location.replace("/visual");
     }
   }
 }
@@ -48,12 +37,12 @@ function QuizDetails(props) {
 
   return (
     <div className="mcq_rounds_main">
-      {parseInt(quesNum) === 6 ? (
+      {parseInt(quesNum) === 7 ? (
         teamNum === 6 ? (
           <div className="mcq_rounds_table_div">
             <table className="mcq_rounds_table">
               <caption className="mcq_rounds_caption">
-                बहुविकल्पीय राउण्ड स्कोर
+                विजुअल राउण्ड स्कोर
               </caption>
               <thead className="mcq_rounds_thead">
                 <tr>
@@ -93,7 +82,7 @@ function QuizDetails(props) {
               to="/quiz"
               onClick={() => postRoundCleanup(true)}
             >
-              राउंड 2 के लिए जाएं
+              राउंड 3 के लिए जाएं
             </Link>
           </div>
         ) : (
@@ -202,4 +191,4 @@ function postRoundCleanup(isOver) {
   sessionStorage.removeItem("answers");
 }
 
-export default McqRounds;
+export default VisualRounds;

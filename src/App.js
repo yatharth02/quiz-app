@@ -5,6 +5,7 @@ import FlipBook from "./FlipBook";
 import McqTeam from "./mcq/McqTeam";
 import McqRounds from "./mcq/McqRounds";
 import VisualTeam from "./visual/VisualTeam";
+import VisualRounds from "./visual/VisualRounds";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/mcq" element={<McqTeam />} />
         <Route path="/mcq_round" element={<McqRounds />} />
         <Route path="/visual" element={<VisualTeam />} />
+        <Route path="/visual_round" element={<VisualRounds />} />
       </Routes>
     </BrowserRouter>
   );
