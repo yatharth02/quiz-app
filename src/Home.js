@@ -21,7 +21,7 @@ class Home extends Component {
           <img src="home/arrow.png" />
         </div>
         <h4 className="home_start">
-          <a className="home_a" href="/quiz">
+          <a className="home_a" href="/flip_book">
             START
           </a>
         </h4>

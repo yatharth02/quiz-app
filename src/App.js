@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/rules" element={<Rules />} />
-        <Route path="/quiz" element={<FlipBook />} />
+        <Route path="/flip_book" element={<FlipBook />} />
         <Route path="/mcq" element={<McqTeam />} />
         <Route path="/mcq_round" element={<McqRounds />} />
         <Route path="/visual" element={<VisualTeam />} />

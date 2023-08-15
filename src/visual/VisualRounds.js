@@ -1,7 +1,8 @@
 import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import Timer from "../mcq/McqTimer";
-import Quiz from "../mcq/McqQuiz";
+import Quiz from "./VisualQuiz";
+import PicTimer from "../PicTimer";
 
 class VisualRounds extends Component {
   render() {
@@ -10,7 +11,7 @@ class VisualRounds extends Component {
     if (JSON.parse(sessionStorage.getItem("data"))) {
       var totalData = JSON.parse(sessionStorage.getItem("data"));
       var data =
-        parseInt(quesNum) === 6
+        parseInt(quesNum) === 8
           ? {}
           : totalData.filter((data) => data["Q.No."] === "Q" + quesNum)[0];
 
@@ -32,12 +33,15 @@ function QuizDetails(props) {
   var teamNum = parseInt(sessionStorage.getItem("teamNum"));
 
   var [nxtQues, setNxtQues] = useState("");
+  var [nxtPic, setNxtPic] = useState(
+    [1, 4, 7].includes(parseInt(quesNum)) ? "" : "True"
+  );
 
   var totalScoreMap = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
 
   return (
     <div className="mcq_rounds_main">
-      {parseInt(quesNum) === 7 ? (
+      {parseInt(quesNum) === 8 ? (
         teamNum === 6 ? (
           <div className="mcq_rounds_table_div">
             <table className="mcq_rounds_table">
@@ -79,7 +83,7 @@ function QuizDetails(props) {
             </table>
             <Link
               className="mcq_rounds_link table"
-              to="/quiz"
+              to="/flip_book"
               onClick={() => postRoundCleanup(true)}
             >
               राउंड 3 के लिए जाएं
@@ -93,7 +97,7 @@ function QuizDetails(props) {
             </div>
             <Link
               className="mcq_rounds_link final"
-              to="/mcq"
+              to="/visual"
               onClick={() => postRoundCleanup(false)}
             >
               टीम-{teamNum + 1} के लिए जाएं
@@ -102,24 +106,38 @@ function QuizDetails(props) {
         )
       ) : (
         <>
-          <div className="mcq_rounds_top">
-            <Timer
-              time={data["TimeLimit(in sec)"]}
-              setNxtQues={setNxtQues}
-              nxtQues={nxtQues}
+          {[1, 4, 7].includes(parseInt(quesNum)) && nxtPic !== "True" ? (
+            <>
+              <div className="mcq_rounds_top">
+                <PicTimer
+                  time={data["Picture TimeLimit(in sec)"]}
+                  setNxtPic={setNxtPic}
+                />
+              </div>
+            </>
+          ) : null}
+
+          <div className="mcq_rounds_q4">
+            <img
+              className="mcq_rounds_q4_img"
+              src={"inputQuiz" + data["Picture"].split("inputQuiz")[1]}
             />
           </div>
-          {parseInt(quesNum) === 4 ? (
-            <div className="mcq_rounds_q4">
-              <img
-                className="mcq_rounds_q4_img"
-                src={"inputQuiz" + data["Picture"].split("inputQuiz")[1]}
-              />
-            </div>
+
+          {nxtPic === "True" ? (
+            <>
+              <div className="mcq_rounds_top">
+                <Timer
+                  time={data["TimeLimit(in sec)"]}
+                  setNxtQues={setNxtQues}
+                  nxtQues={nxtQues}
+                />
+              </div>
+              <div className="mcq_rounds_bottom">
+                <Quiz data={data} setNxtQues={setNxtQues} nxtQues={nxtQues} />
+              </div>
+            </>
           ) : null}
-          <div className="mcq_rounds_bottom">
-            <Quiz data={data} setNxtQues={setNxtQues} nxtQues={nxtQues} />
-          </div>
 
           {nxtQues ? (
             <>
@@ -132,7 +150,7 @@ function QuizDetails(props) {
                   <img src="mcq\hourglass-done.gif" />
                 )}
               </div>
-              {parseInt(quesNum) === 5 ? (
+              {parseInt(quesNum) === 7 ? (
                 <>
                   <Link
                     className="mcq_rounds_link score"

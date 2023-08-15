@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useEffect } from "react";
 
 import useSound from "use-sound";
 
@@ -26,9 +26,6 @@ function QuizDesign(props) {
   var setNxtQues = props.setNxtQues;
   var nxtQues = props.nxtQues;
 
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [ansClassName, setAnsClassName] = useState("mcq_rounds_answer");
-
   const [letsPlay] = useSound("mcq/play.mp3");
   const [correctAns] = useSound("mcq/correct.mp3");
   const [wrongAns] = useSound("mcq/wrong.mp3");
@@ -44,7 +41,7 @@ function QuizDesign(props) {
   };
 
   const handleAnswer = (ans) => {
-    const isCorrect = ans === data["Choice-1(Correct Ans)"];
+    const isCorrect = ans === "RIGHT";
     setNxtQues(isCorrect ? "c" : "w");
 
     if (isCorrect)
@@ -53,50 +50,52 @@ function QuizDesign(props) {
         parseInt(sessionStorage.getItem("score")) + data["Marks"]
       );
 
-    setSelectedAnswer(ans);
-    setAnsClassName("mcq_rounds_answer active");
-
-    delay(1000, () =>
-      setAnsClassName(
-        isCorrect ? "mcq_rounds_answer correct" : "mcq_rounds_answer wrong"
-      )
-    );
-
     delay(500, () => {
       if (isCorrect) correctAns();
       else wrongAns();
     });
   };
 
-  const optionMap = { 0: "A", 1: "B", 2: "C", 3: "D" };
+  const optionMap = { 0: "A", 1: "B" };
 
-  var answers = sessionStorage.getItem("answers").split("&$&");
+  var answers = ["RIGHT", "WRONG"];
 
   return (
     <>
-      {answers.map((answer, index) => {
-        return (
-          <div
-            disabled={nxtQues ? true : false}
-            key={index}
-            id={
-              ["w", "t"].includes(nxtQues) &&
-              answer === data["Choice-1(Correct Ans)"]
-                ? "mcq_rounds_id"
-                : null
-            }
-            className={
-              selectedAnswer === answer ? ansClassName : "mcq_rounds_answer"
-            }
-            onClick={() => handleAnswer(answer)}
-          >
-            <span className="mcq_rounds_option">
-              &#x2756; {optionMap[index]}:{" "}
-            </span>
-            {answer}
-          </div>
-        );
-      })}
+      {nxtQues ? (
+        <div
+          isabled={nxtQues ? true : false}
+          className={
+            nxtQues === "c"
+              ? "mcq_rounds_answer correct"
+              : "mcq_rounds_answer wrong"
+          }
+        >
+          <span className="mcq_rounds_option">&#x2756;</span>
+          {data["Answers"]}
+        </div>
+      ) : (
+        answers.map((answer, index) => {
+          return (
+            <div
+              disabled={nxtQues ? true : false}
+              key={index}
+              id={
+                ["w", "t"].includes(nxtQues) && answer === "RIGHT"
+                  ? "mcq_rounds_id"
+                  : null
+              }
+              className="mcq_rounds_answer"
+              onClick={() => handleAnswer(answer)}
+            >
+              <span className="mcq_rounds_option">
+                &#x2756; {optionMap[index]}:{" "}
+              </span>
+              {answer}
+            </div>
+          );
+        })
+      )}
     </>
   );
 }

@@ -90,7 +90,7 @@ function QuizDetails(props) {
             </table>
             <Link
               className="mcq_rounds_link table"
-              to="/quiz"
+              to="/flip_book"
               onClick={() => postRoundCleanup(true)}
             >
               राउंड 2 के लिए जाएं
