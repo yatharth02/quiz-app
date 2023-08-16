@@ -6,6 +6,8 @@ import McqTeam from "./mcq/McqTeam";
 import McqRounds from "./mcq/McqRounds";
 import VisualTeam from "./visual/VisualTeam";
 import VisualRounds from "./visual/VisualRounds";
+import ExtemporeTeam from "./extempore/ExtemporeTeam";
+import ExtemporeRounds from "./extempore/ExtemporeRounds";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/mcq_round" element={<McqRounds />} />
         <Route path="/visual" element={<VisualTeam />} />
         <Route path="/visual_round" element={<VisualRounds />} />
+        <Route path="/extempore" element={<ExtemporeTeam />} />
+        <Route path="/extempore_round" element={<ExtemporeRounds />} />
       </Routes>
     </BrowserRouter>
   );

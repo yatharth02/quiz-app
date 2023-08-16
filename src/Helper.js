@@ -11,9 +11,13 @@ export async function readData(team, sheetName) {
       });
 
       let rawObj = utils.sheet_to_json(wb.Sheets[sheetName]);
-      return JSON.parse(JSON.stringify(rawObj)).filter(
-        (data) => data.Team === team
-      );
+
+      if (team) {
+        return JSON.parse(JSON.stringify(rawObj)).filter(
+          (data) => data.Team === team
+        );
+      }
+      return JSON.parse(JSON.stringify(rawObj));
     });
 }
 
@@ -25,4 +29,8 @@ export function shuffleArrayToString(array) {
     array[j] = temp;
   }
   return array.join("&$&");
+}
+
+export function random_item(items) {
+  return items[Math.floor(Math.random() * items.length)];
 }

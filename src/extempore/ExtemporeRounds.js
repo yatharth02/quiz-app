@@ -1,28 +1,29 @@
 import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import Timer from "../mcq/McqTimer";
-import Quiz from "./VisualQuiz";
 import PicTimer from "../PicTimer";
+import { random_item } from "../Helper";
 import useSound from "use-sound";
 
-class VisualRounds extends Component {
+class ExtemporeRounds extends Component {
   render() {
     var quesNum = sessionStorage.getItem("quesNum");
 
     if (JSON.parse(sessionStorage.getItem("data"))) {
       var totalData = JSON.parse(sessionStorage.getItem("data"));
-      var data =
-        parseInt(quesNum) === 8
-          ? {}
-          : totalData.filter((data) => data["Q.No."] === "Q" + quesNum)[0];
+      var tempTotalData = JSON.parse(sessionStorage.getItem("tempTotalData"));
+
+      totalData = tempTotalData
+        ? totalData.filter((val) => !(val in tempTotalData))
+        : totalData;
+
+      var data = random_item(totalData);
 
       if (parseInt(quesNum) === 1) sessionStorage.setItem("score", 0);
 
-      return (
-        <QuizDetails quesNum={quesNum} data={data} totalData={totalData} />
-      );
+      return <QuizDetails quesNum={quesNum} data={data} />;
     } else {
-      window.location.replace("/visual");
+      window.location.replace("/extempore");
     }
   }
 }
@@ -30,26 +31,23 @@ class VisualRounds extends Component {
 function QuizDetails(props) {
   var quesNum = props.quesNum;
   var data = props.data;
-  var totalData = props.totalData;
   var teamNum = parseInt(sessionStorage.getItem("teamNum"));
 
   var [nxtQues, setNxtQues] = useState("");
-  var [nxtPic, setNxtPic] = useState(
-    [1, 4, 7].includes(parseInt(quesNum)) ? "" : "True"
-  );
-
-  const [letsPlay] = useSound("mcq/play.mp3");
+  var [nxtPic, setNxtPic] = useState("");
 
   var totalScoreMap = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
 
+  const [letsPlay] = useSound("mcq/play.mp3");
+
   return (
     <div className="mcq_rounds_main">
-      {parseInt(quesNum) === 8 ? (
+      {parseInt(quesNum) === 2 ? (
         teamNum === 6 ? (
           <div className="mcq_rounds_table_div">
             <table className="mcq_rounds_table">
               <caption className="mcq_rounds_caption">
-                विजुअल राउण्ड स्कोर
+                एक्सटेम्पोर राउण्ड स्कोर
               </caption>
               <thead className="mcq_rounds_thead">
                 <tr>
@@ -89,18 +87,18 @@ function QuizDetails(props) {
               to="/flip_book"
               onClick={() => postRoundCleanup(true)}
             >
-              राउंड 3 के लिए जाएं
+              राउंड 4 के लिए जाएं
             </Link>
           </div>
         ) : (
           <>
             <div className="mcq_rounds_final">
               Total score {sessionStorage.getItem("score")} out of&nbsp;
-              {totalData.map((val) => val.Marks).reduce((a, b) => a + b, 0)}
+              {data.Marks}
             </div>
             <Link
               className="mcq_rounds_link final"
-              to="/visual"
+              to="/extempore"
               onClick={() => postRoundCleanup(false)}
             >
               टीम-{teamNum + 1} के लिए जाएं
@@ -109,24 +107,22 @@ function QuizDetails(props) {
         )
       ) : (
         <>
-          {[1, 4, 7].includes(parseInt(quesNum)) && nxtPic !== "True" ? (
-            <>
+          <div className="mcq_rounds_quiz">
+            <div className="mcq_rounds_question">
+              <label>{data["Choice-1"]}</label>
+              &emsp;&emsp;&emsp;&emsp;अथवा&emsp;&emsp;&emsp;&emsp;
+              <label>{data["Choice-2"]}</label>
+            </div>
+          </div>
+
+          {nxtPic !== "True" ? (
+            <div className="mcq_rounds_quiz">
               {letsPlay()}
               <div className="mcq_rounds_top">
-                <PicTimer
-                  time={data["Picture TimeLimit(in sec)"]}
-                  setNxtPic={setNxtPic}
-                />
+                <PicTimer time={data["Thinking"]} setNxtPic={setNxtPic} />
               </div>
-            </>
+            </div>
           ) : null}
-
-          <div className="mcq_rounds_q4">
-            <img
-              className="mcq_rounds_q4_img"
-              src={"inputQuiz" + data["Picture"].split("inputQuiz")[1]}
-            />
-          </div>
 
           {nxtPic === "True" ? (
             <>
@@ -137,63 +133,56 @@ function QuizDetails(props) {
                   nxtQues={nxtQues}
                 />
               </div>
-              <div className="mcq_rounds_bottom">
-                <Quiz data={data} setNxtQues={setNxtQues} nxtQues={nxtQues} />
+              <div className="mcq_rounds_quiz">
+                <div className="extempore_bottom">
+                  <button
+                    className="extempore_btn"
+                    onClick={() =>
+                      provideScore(quesNum, setNxtQues, data, teamNum)
+                    }
+                  >
+                    Provide Score
+                  </button>
+                </div>
               </div>
             </>
           ) : null}
 
           {nxtQues ? (
-            <>
-              <div className="mcq_rounds_gif">
-                {nxtQues === "c" ? (
-                  <img src="mcq\dance-emoji.gif" />
-                ) : nxtQues === "w" ? (
-                  <img src="mcq\crying-emoji.gif" />
-                ) : (
-                  <img src="mcq\hourglass-done.gif" />
-                )}
-              </div>
-              {parseInt(quesNum) === 7 ? (
-                <>
-                  <Link
-                    className="mcq_rounds_link score"
-                    onClick={() => {
-                      var tNum = new Map(
-                        JSON.parse(sessionStorage.getItem("totalScore"))
-                      );
-                      tNum.set(
-                        "Team-" + teamNum,
-                        sessionStorage.getItem("score")
-                      );
-                      sessionStorage.setItem(
-                        "totalScore",
-                        JSON.stringify(Array.from(tNum.entries()))
-                      );
-                      sessionStorage.setItem("quesNum", parseInt(quesNum) + 1);
-                      window.location.reload();
-                    }}
-                  >
-                    चेक स्कोर
-                  </Link>
-                </>
-              ) : (
-                <Link
-                  className="mcq_rounds_link"
-                  onClick={() => {
-                    sessionStorage.setItem("quesNum", parseInt(quesNum) + 1);
-                    window.location.reload();
-                  }}
-                >
-                  अगला सवाल
-                </Link>
-              )}
-            </>
+            <div className="mcq_rounds_gif">
+              <img src="mcq\dance-emoji.gif" />
+            </div>
           ) : null}
         </>
       )}
     </div>
   );
+}
+
+function provideScore(quesNum, setNxtQues, data, teamNum) {
+  setNxtQues("c");
+  sessionStorage.setItem("quesNum", parseInt(quesNum) + 1);
+
+  var tempTotalData = JSON.parse(sessionStorage.getItem("tempTotalData"));
+
+  if (tempTotalData) {
+    tempTotalData.push(data);
+  } else {
+    tempTotalData = [data];
+  }
+  sessionStorage.setItem("tempTotalData", JSON.stringify(tempTotalData));
+
+  var value = prompt("Please enter score out of 10");
+  sessionStorage.setItem("score", parseInt(value));
+
+  var tNum = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
+  tNum.set("Team-" + teamNum, sessionStorage.getItem("score"));
+  sessionStorage.setItem(
+    "totalScore",
+    JSON.stringify(Array.from(tNum.entries()))
+  );
+
+  window.location.reload();
 }
 
 function postRoundCleanup(isOver) {
@@ -206,6 +195,7 @@ function postRoundCleanup(isOver) {
   } else {
     sessionStorage.removeItem("teamNum");
     sessionStorage.removeItem("totalScore");
+    sessionStorage.removeItem("tempTotalData");
     sessionStorage.setItem("roundClear", true);
   }
   sessionStorage.removeItem("score");
@@ -213,4 +203,4 @@ function postRoundCleanup(isOver) {
   sessionStorage.removeItem("answers");
 }
 
-export default VisualRounds;
+export default ExtemporeRounds;
