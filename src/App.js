@@ -8,6 +8,8 @@ import VisualTeam from "./visual/VisualTeam";
 import VisualRounds from "./visual/VisualRounds";
 import ExtemporeTeam from "./extempore/ExtemporeTeam";
 import ExtemporeRounds from "./extempore/ExtemporeRounds";
+import VideoTeam from "./video/VideoTeam";
+import VideoRounds from "./video/VideoRounds";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/visual_round" element={<VisualRounds />} />
         <Route path="/extempore" element={<ExtemporeTeam />} />
         <Route path="/extempore_round" element={<ExtemporeRounds />} />
+        <Route path="/video" element={<VideoTeam />} />
+        <Route path="/video_round" element={<VideoRounds />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,11 +1,10 @@
 import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import Timer from "../mcq/McqTimer";
-import Quiz from "./VisualQuiz";
+import Quiz from "./VideoQuiz";
 import PicTimer from "../PicTimer";
-import useSound from "use-sound";
 
-class VisualRounds extends Component {
+class VideoRounds extends Component {
   render() {
     var quesNum = sessionStorage.getItem("quesNum");
 
@@ -38,13 +37,11 @@ function QuizDetails(props) {
     [1, 4, 7].includes(parseInt(quesNum)) ? "" : "True"
   );
 
-  const [letsPlay] = useSound("mcq/play.mp3");
-
   var totalScoreMap = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
 
   return (
     <div className="mcq_rounds_main">
-      {parseInt(quesNum) === 8 ? (
+      {parseInt(quesNum) === 4 ? (
         teamNum === 6 ? (
           <div className="mcq_rounds_table_div">
             <table className="mcq_rounds_table">
@@ -89,7 +86,7 @@ function QuizDetails(props) {
               to="/flip_book"
               onClick={() => postRoundCleanup(true)}
             >
-              राउंड 3 के लिए जाएं
+              राउंड 5 के लिए जाएं
             </Link>
           </div>
         ) : (
@@ -100,7 +97,7 @@ function QuizDetails(props) {
             </div>
             <Link
               className="mcq_rounds_link final"
-              to="/visual"
+              to="/video"
               onClick={() => postRoundCleanup(false)}
             >
               टीम-{teamNum + 1} के लिए जाएं
@@ -109,25 +106,23 @@ function QuizDetails(props) {
         )
       ) : (
         <>
-          {[1, 4, 7].includes(parseInt(quesNum)) && nxtPic !== "True" ? (
+          {parseInt(quesNum) === 1 && nxtPic !== "True" ? (
             <>
-              {letsPlay()}
               <div className="mcq_rounds_top">
                 <PicTimer
-                  time={data["Picture TimeLimit(in sec)"]}
+                  time={data["Video TimeLimit(in sec)"]}
                   setNxtPic={setNxtPic}
                 />
               </div>
+              <video
+                src={"inputQuiz" + data["Video"].split("inputQuiz")[1]}
+                width="100%"
+                height="100%"
+                controls
+                autoPlay
+              />
             </>
           ) : null}
-
-          <div className="mcq_rounds_q4">
-            <img
-              className="mcq_rounds_q4_img"
-              src={"inputQuiz" + data["Picture"].split("inputQuiz")[1]}
-            />
-          </div>
-
           {nxtPic === "True" ? (
             <>
               <div className="mcq_rounds_top">
@@ -142,19 +137,18 @@ function QuizDetails(props) {
               </div>
             </>
           ) : null}
-
           {nxtQues ? (
             <>
               <div className="mcq_rounds_gif">
                 {nxtQues === "c" ? (
-                  <img src="mcq\dance-emoji.gif" />
+                  <img src="mcq\dance-emoji.gif" alt="dance-emoji" />
                 ) : nxtQues === "w" ? (
-                  <img src="mcq\crying-emoji.gif" />
+                  <img src="mcq\crying-emoji.gif" alt="crying-emoji" />
                 ) : (
-                  <img src="mcq\hourglass-done.gif" />
+                  <img src="mcq\hourglass-done.gif" alt="hourglass-done" />
                 )}
               </div>
-              {parseInt(quesNum) === 7 ? (
+              {parseInt(quesNum) === 3 ? (
                 <>
                   <Link
                     className="mcq_rounds_link score"
@@ -206,11 +200,11 @@ function postRoundCleanup(isOver) {
   } else {
     sessionStorage.removeItem("teamNum");
     sessionStorage.removeItem("totalScore");
-    sessionStorage.setItem("roundClear_2", true);
+    sessionStorage.setItem("roundClear_4", true);
   }
   sessionStorage.removeItem("score");
   sessionStorage.removeItem("data");
   sessionStorage.removeItem("answers");
 }
 
-export default VisualRounds;
+export default VideoRounds;

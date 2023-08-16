@@ -196,7 +196,7 @@ function postRoundCleanup(isOver) {
     sessionStorage.removeItem("teamNum");
     sessionStorage.removeItem("totalScore");
     sessionStorage.removeItem("tempTotalData");
-    sessionStorage.setItem("roundClear", true);
+    sessionStorage.setItem("roundClear_3", true);
   }
   sessionStorage.removeItem("score");
   sessionStorage.removeItem("data");

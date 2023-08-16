@@ -15,12 +15,17 @@ class FlipBook extends Component {
       "rounds",
       JSON.stringify(Array.from(roundsMap.entries()))
     );
+  }
 
-    sessionStorage.setItem("roundClear", false);
+  setRoundClear() {
+    for (var i = 1; i <= 6; i++) {
+      sessionStorage.setItem("roundClear_" + i, false);
+    }
   }
 
   render() {
     if (!sessionStorage.getItem("rounds")) {
+      this.setRoundClear();
       sessionStorage.setItem(
         "rounds",
         JSON.stringify(
@@ -125,7 +130,9 @@ class FlipBook extends Component {
                   this.setTeamNum(1);
                 }}
                 disabled={
-                  sessionStorage.getItem("roundClear") === "true" ? true : false
+                  sessionStorage.getItem("roundClear_1") === "true"
+                    ? true
+                    : false
                 }
               >
                 दौर 1 शुरू करे
@@ -163,7 +170,9 @@ class FlipBook extends Component {
                   this.setTeamNum(2);
                 }}
                 disabled={
-                  sessionStorage.getItem("roundClear") === "true" ? true : false
+                  sessionStorage.getItem("roundClear_2") === "true"
+                    ? true
+                    : false
                 }
               >
                 दौर 2 शुरू करे
@@ -198,7 +207,9 @@ class FlipBook extends Component {
                   this.setTeamNum(3);
                 }}
                 disabled={
-                  sessionStorage.getItem("roundClear") === "true" ? true : false
+                  sessionStorage.getItem("roundClear_3") === "true"
+                    ? true
+                    : false
                 }
               >
                 दौर 3 शुरू करे
@@ -227,7 +238,18 @@ class FlipBook extends Component {
                 <br />
                 10 अंक प्रति प्रश्न, अधिकतम 30 अंक।
               </p>
-              <Link className="flip_link" to="/">
+              <Link
+                className="flip_link"
+                to="/video"
+                onClick={() => {
+                  this.setTeamNum(4);
+                }}
+                disabled={
+                  sessionStorage.getItem("roundClear_4") === "true"
+                    ? true
+                    : false
+                }
+              >
                 दौर 4 शुरू करे
               </Link>
               <label className="flip_next-btn" htmlFor="flip_c5">
