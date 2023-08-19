@@ -11,7 +11,7 @@ class VideoRounds extends Component {
     if (JSON.parse(sessionStorage.getItem("data"))) {
       var totalData = JSON.parse(sessionStorage.getItem("data"));
       var data =
-        parseInt(quesNum) === 8
+        parseInt(quesNum) === 4
           ? {}
           : totalData.filter((data) => data["Q.No."] === "Q" + quesNum)[0];
 
@@ -21,7 +21,7 @@ class VideoRounds extends Component {
         <QuizDetails quesNum={quesNum} data={data} totalData={totalData} />
       );
     } else {
-      window.location.replace("/visual");
+      window.location.replace("/video");
     }
   }
 }
@@ -46,7 +46,7 @@ function QuizDetails(props) {
           <div className="mcq_rounds_table_div">
             <table className="mcq_rounds_table">
               <caption className="mcq_rounds_caption">
-                विजुअल राउण्ड स्कोर
+                वीडियो राउण्ड स्कोर
               </caption>
               <thead className="mcq_rounds_thead">
                 <tr>

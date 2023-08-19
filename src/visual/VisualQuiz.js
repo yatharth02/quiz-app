@@ -64,7 +64,7 @@ function QuizDesign(props) {
     <>
       {nxtQues ? (
         <div
-          isabled={nxtQues ? true : false}
+          disabled={nxtQues ? true : false}
           className={
             nxtQues === "c"
               ? "mcq_rounds_answer correct"

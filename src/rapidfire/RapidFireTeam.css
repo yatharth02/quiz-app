@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.rapid_cont {
+  background: black;
+  height: 100vh;
+  width: 100%;
+}
+.rapid_text {
+  width: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+.rapid_cont video {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+.rapid_text span {
+  text-align: center;
+  padding-left: 10%;
+  font-weight: 800;
+  font-size: 50px;
+  color: #777;
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  animation: reveal 2.5s linear forwards;
+  opacity: 0;
+  filter: blur(13px);
+}
+@keyframes reveal {
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+span:nth-child(1) {
+  animation-delay: 0.7s;
+  -webkit-animation-delay: 0.7s;
+  -moz-animation-delay: 0.7s;
+}
+span:nth-child(2) {
+  animation-delay: 1.4s;
+  -webkit-animation-delay: 1.4s;
+  -moz-animation-delay: 1.4s;
+}
+span:nth-child(3) {
+  animation-delay: 2.1s;
+  -webkit-animation-delay: 2.1s;
+  -moz-animation-delay: 2.1s;
+}
+span:nth-child(4) {
+  animation-delay: 2.8s;
+  -webkit-animation-delay: 2.8s;
+  -moz-animation-delay: 2.8s;
+}
+span:nth-child(5) {
+  animation-delay: 3.5s;
+  -webkit-animation-delay: 3.5s;
+  -moz-animation-delay: 3.5s;
+}
+.rapid_link {
+  position: relative;
+  font-weight: 800;
+  font-size: 50px;
+  background-color: #353d4d;
+  color: #b96161;
+  transition: background-color 1s;
+  padding: 4px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  text-decoration: none;
+}
+.rapid_link:hover {
+  background-color: #004369;
+}
+.rapid_link:focus,
+.rapid_link:active {
+  background-color: black;
+  transition: none;
+}

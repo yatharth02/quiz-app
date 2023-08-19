@@ -10,6 +10,8 @@ import ExtemporeTeam from "./extempore/ExtemporeTeam";
 import ExtemporeRounds from "./extempore/ExtemporeRounds";
 import VideoTeam from "./video/VideoTeam";
 import VideoRounds from "./video/VideoRounds";
+import RapidFireTeam from "./rapidfire/RapidFireTeam";
+import RapidFireRounds from "./rapidfire/RapidFireRounds";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path="/extempore_round" element={<ExtemporeRounds />} />
         <Route path="/video" element={<VideoTeam />} />
         <Route path="/video_round" element={<VideoRounds />} />
+        <Route path="/rapid" element={<RapidFireTeam />} />
+        <Route path="/rapid_round" element={<RapidFireRounds />} />
       </Routes>
     </BrowserRouter>
   );
