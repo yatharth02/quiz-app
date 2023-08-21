@@ -12,6 +12,8 @@ import VideoTeam from "./video/VideoTeam";
 import VideoRounds from "./video/VideoRounds";
 import RapidFireTeam from "./rapidfire/RapidFireTeam";
 import RapidFireRounds from "./rapidfire/RapidFireRounds";
+import BuzzerTeam from "./buzzer/BuzzerTeam";
+import BuzzerRounds from "./buzzer/BuzzerRounds";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
         <Route path="/video_round" element={<VideoRounds />} />
         <Route path="/rapid" element={<RapidFireTeam />} />
         <Route path="/rapid_round" element={<RapidFireRounds />} />
+        <Route path="/buzzer" element={<BuzzerTeam />} />
+        <Route path="/buzzer_round" element={<BuzzerRounds />} />
       </Routes>
     </BrowserRouter>
   );

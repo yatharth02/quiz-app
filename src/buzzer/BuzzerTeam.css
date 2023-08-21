@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.buzzer_cont {
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  background: url("../../public/buzzer/minion_buzzer.gif") no-repeat center
+    center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.buzzer_link {
+  position: relative;
+  font-weight: 800;
+  font-size: 50px;
+  background-color: #353d4d;
+  color: #b96161;
+  transition: background-color 1s;
+  padding: 4px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  text-decoration: none;
+}
+.buzzer_link:hover {
+  background-color: #004369;
+}
+.buzzer_link:focus,
+.buzzer_link:active {
+  background-color: black;
+  transition: none;
+}
+.buzzer_rounds_top {
+  height: 40%;
+  position: relative;
+  margin: 0px auto;
+}
+.buzzer_rounds_answers {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+}

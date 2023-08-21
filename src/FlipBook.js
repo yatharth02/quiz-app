@@ -316,7 +316,18 @@ class FlipBook extends Component {
                 <br />
                 अधिकतम 100 अंक।
               </p>
-              <Link className="flip_link" to="/">
+              <Link
+                className="flip_link"
+                to="/buzzer"
+                onClick={() => {
+                  this.setTeamNum(6);
+                }}
+                disabled={
+                  sessionStorage.getItem("roundClear_6") === "true"
+                    ? true
+                    : false
+                }
+              >
                 दौर 6 शुरू करे
               </Link>
               <label className="flip_next-btn" htmlFor="flip_c7">

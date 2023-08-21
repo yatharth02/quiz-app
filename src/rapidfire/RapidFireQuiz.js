@@ -35,9 +35,9 @@ function QuizDesign(props) {
     setQuesNum(quesNum + 1);
   };
 
-  const optionMap = { 0: "A", 1: "B" };
+  const optionMap = { 0: "A", 1: "B", 2: "C" };
 
-  var answers = ["RIGHT", "WRONG"];
+  var answers = ["RIGHT", "WRONG", "SKIP"];
 
   return (
     <>
