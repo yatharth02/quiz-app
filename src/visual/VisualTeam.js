@@ -20,9 +20,9 @@ class VisualTeam extends Component {
     var teamNum = sessionStorage.getItem("teamNum");
     this.renderPosts(teamNum);
 
-    if (!sessionStorage.getItem("totalScore")) {
+    if (!sessionStorage.getItem("visualTotalScore")) {
       sessionStorage.setItem(
-        "totalScore",
+        "visualTotalScore",
         JSON.stringify(
           Array.from(
             new Map([

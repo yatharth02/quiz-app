@@ -2,7 +2,7 @@ import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import Timer from "../mcq/McqTimer";
 import PicTimer from "../PicTimer";
-import { random_item } from "../Helper";
+import { randomItem } from "../Helper";
 import useSound from "use-sound";
 
 class ExtemporeRounds extends Component {
@@ -17,7 +17,7 @@ class ExtemporeRounds extends Component {
         ? totalData.filter((val) => !(val in tempTotalData))
         : totalData;
 
-      var data = random_item(totalData);
+      var data = randomItem(totalData);
 
       if (parseInt(quesNum) === 1) sessionStorage.setItem("score", 0);
 
@@ -36,7 +36,9 @@ function QuizDetails(props) {
   var [nxtQues, setNxtQues] = useState("");
   var [nxtPic, setNxtPic] = useState("");
 
-  var totalScoreMap = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
+  var totalScoreMap = new Map(
+    JSON.parse(sessionStorage.getItem("extemporeTotalScore"))
+  );
 
   const [letsPlay] = useSound("mcq/play.mp3");
 
@@ -175,10 +177,10 @@ function provideScore(quesNum, setNxtQues, data, teamNum) {
   var value = prompt("Please enter score out of 10");
   sessionStorage.setItem("score", parseInt(value));
 
-  var tNum = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
+  var tNum = new Map(JSON.parse(sessionStorage.getItem("extemporeTotalScore")));
   tNum.set("Team-" + teamNum, sessionStorage.getItem("score"));
   sessionStorage.setItem(
-    "totalScore",
+    "extemporeTotalScore",
     JSON.stringify(Array.from(tNum.entries()))
   );
 
@@ -194,7 +196,7 @@ function postRoundCleanup(isOver) {
     );
   } else {
     sessionStorage.removeItem("teamNum");
-    sessionStorage.removeItem("totalScore");
+    // sessionStorage.removeItem("totalScore");
     sessionStorage.removeItem("tempTotalData");
     sessionStorage.setItem("roundClear_3", true);
   }

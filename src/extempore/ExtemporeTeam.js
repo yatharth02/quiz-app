@@ -20,9 +20,9 @@ class ExtemporeTeam extends Component {
     var teamNum = sessionStorage.getItem("teamNum");
     this.renderPosts();
 
-    if (!sessionStorage.getItem("totalScore")) {
+    if (!sessionStorage.getItem("extemporeTotalScore")) {
       sessionStorage.setItem(
-        "totalScore",
+        "extemporeTotalScore",
         JSON.stringify(
           Array.from(
             new Map([

@@ -23,7 +23,9 @@ function QuizDetails(props) {
   var [quesNum, setQuesNum] = useState(1);
   var [finalSocre, setFinalScore] = useState(false);
 
-  var totalScoreMap = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
+  var totalScoreMap = new Map(
+    JSON.parse(sessionStorage.getItem("rapidTotalScore"))
+  );
 
   return (
     <div className="mcq_rounds_main">
@@ -114,10 +116,10 @@ function QuizDetails(props) {
 }
 
 function scoreUpdation(setFinalScore, teamNum) {
-  var tNum = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
+  var tNum = new Map(JSON.parse(sessionStorage.getItem("rapidTotalScore")));
   tNum.set("Team-" + teamNum, sessionStorage.getItem("score"));
   sessionStorage.setItem(
-    "totalScore",
+    "rapidTotalScore",
     JSON.stringify(Array.from(tNum.entries()))
   );
   setFinalScore(true);
@@ -149,7 +151,7 @@ function postRoundCleanup(isOver) {
     );
   } else {
     sessionStorage.removeItem("teamNum");
-    sessionStorage.removeItem("totalScore");
+    // sessionStorage.removeItem("totalScore");
     sessionStorage.setItem("roundClear_5", true);
   }
   sessionStorage.removeItem("score");

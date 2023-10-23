@@ -20,9 +20,9 @@ class McqTeam extends Component {
     var teamNum = sessionStorage.getItem("teamNum");
     this.renderPosts(teamNum);
 
-    if (!sessionStorage.getItem("totalScore")) {
+    if (!sessionStorage.getItem("mcqTotalScore")) {
       sessionStorage.setItem(
-        "totalScore",
+        "mcqTotalScore",
         JSON.stringify(
           Array.from(
             new Map([

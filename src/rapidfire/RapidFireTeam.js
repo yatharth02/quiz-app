@@ -17,9 +17,9 @@ class RapidFireTeam extends Component {
     var teamNum = sessionStorage.getItem("teamNum");
     this.renderPosts(teamNum);
 
-    if (!sessionStorage.getItem("totalScore")) {
+    if (!sessionStorage.getItem("rapidTotalScore")) {
       sessionStorage.setItem(
-        "totalScore",
+        "rapidTotalScore",
         JSON.stringify(
           Array.from(
             new Map([

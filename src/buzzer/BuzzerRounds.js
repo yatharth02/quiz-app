@@ -31,7 +31,9 @@ function QuizDetails(props) {
   var [askQues, setAskQues] = useState("False");
   var [teamSelected, setTeamSelected] = useState("");
 
-  var totalScoreMap = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
+  var totalScoreMap = new Map(
+    JSON.parse(sessionStorage.getItem("buzzerTotalScore"))
+  );
 
   return (
     <div className="mcq_rounds_main">
@@ -156,7 +158,7 @@ function postRoundCleanup(isOver) {
     );
   } else {
     sessionStorage.removeItem("teamNum");
-    sessionStorage.removeItem("totalScore");
+    // sessionStorage.removeItem("totalScore");
     sessionStorage.setItem("roundClear_6", true);
   }
   sessionStorage.removeItem("score");

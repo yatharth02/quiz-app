@@ -61,10 +61,10 @@ function QuizDesign(props) {
     if (isCorrect) score = parseInt(data["Marks"]);
     else score = -parseInt(data["Negative Marking"]);
 
-    var tNum = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
+    var tNum = new Map(JSON.parse(sessionStorage.getItem("buzzerTotalScore")));
     tNum.set(teamSelected, parseInt(tNum.get(teamSelected)) + score);
     sessionStorage.setItem(
-      "totalScore",
+      "buzzerTotalScore",
       JSON.stringify(Array.from(tNum.entries()))
     );
 

@@ -24,9 +24,9 @@ class VideoTeam extends Component {
     var teamNum = sessionStorage.getItem("teamNum");
     this.renderPosts(teamNum);
 
-    if (!sessionStorage.getItem("totalScore")) {
+    if (!sessionStorage.getItem("videoTotalScore")) {
       sessionStorage.setItem(
-        "totalScore",
+        "videoTotalScore",
         JSON.stringify(
           Array.from(
             new Map([

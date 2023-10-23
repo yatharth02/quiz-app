@@ -44,7 +44,9 @@ function QuizDetails(props) {
 
   var [nxtQues, setNxtQues] = useState("");
 
-  var totalScoreMap = new Map(JSON.parse(sessionStorage.getItem("totalScore")));
+  var totalScoreMap = new Map(
+    JSON.parse(sessionStorage.getItem("mcqTotalScore"))
+  );
 
   return (
     <div className="mcq_rounds_main">
@@ -149,14 +151,14 @@ function QuizDetails(props) {
                     className="mcq_rounds_link score"
                     onClick={() => {
                       var tNum = new Map(
-                        JSON.parse(sessionStorage.getItem("totalScore"))
+                        JSON.parse(sessionStorage.getItem("mcqTotalScore"))
                       );
                       tNum.set(
                         "Team-" + teamNum,
                         sessionStorage.getItem("score")
                       );
                       sessionStorage.setItem(
-                        "totalScore",
+                        "mcqTotalScore",
                         JSON.stringify(Array.from(tNum.entries()))
                       );
                       sessionStorage.setItem("quesNum", parseInt(quesNum) + 1);
@@ -194,7 +196,7 @@ function postRoundCleanup(isOver) {
     );
   } else {
     sessionStorage.removeItem("teamNum");
-    sessionStorage.removeItem("totalScore");
+    // sessionStorage.removeItem("totalScore");
     sessionStorage.setItem("roundClear_1", true);
   }
   sessionStorage.removeItem("score");

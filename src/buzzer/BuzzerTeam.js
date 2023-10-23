@@ -24,9 +24,9 @@ class BuzzerTeam extends Component {
   render() {
     this.renderPosts();
 
-    if (!sessionStorage.getItem("totalScore")) {
+    if (!sessionStorage.getItem("buzzerTotalScore")) {
       sessionStorage.setItem(
-        "totalScore",
+        "buzzerTotalScore",
         JSON.stringify(
           Array.from(
             new Map([
