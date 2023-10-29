@@ -10,26 +10,26 @@ class FinalResultDisplay extends Component {
     var extemporeTotalScoreMap = new Map(
       JSON.parse(sessionStorage.getItem("extemporeTotalScore"))
     );
-    var finaTotalScoreMap = combineMaps(
-      buzzerTotalScoreMap,
-      extemporeTotalScoreMap
-    );
     var mcqTotalScoreMap = new Map(
       JSON.parse(sessionStorage.getItem("mcqTotalScore"))
     );
-    var finaTotalScoreMap = combineMaps(finaTotalScoreMap, mcqTotalScoreMap);
     var rapidTotalScoreMap = new Map(
       JSON.parse(sessionStorage.getItem("rapidTotalScore"))
     );
-    var finaTotalScoreMap = combineMaps(finaTotalScoreMap, rapidTotalScoreMap);
     var videoTotalScoreMap = new Map(
       JSON.parse(sessionStorage.getItem("videoTotalScore"))
     );
-    var finaTotalScoreMap = combineMaps(finaTotalScoreMap, videoTotalScoreMap);
     var visualTotalScoreMap = new Map(
       JSON.parse(sessionStorage.getItem("visualTotalScore"))
     );
-    var finaTotalScoreMap = combineMaps(finaTotalScoreMap, visualTotalScoreMap);
+    var finaTotalScoreMap = combineMaps(
+      buzzerTotalScoreMap,
+      extemporeTotalScoreMap,
+      mcqTotalScoreMap,
+      rapidTotalScoreMap,
+      videoTotalScoreMap,
+      visualTotalScoreMap
+    );
     return <div></div>;
   }
 }

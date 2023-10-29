@@ -35,16 +35,11 @@ export function randomItem(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 
-export function combineMaps(map1, map2) {
-  let combinedMap = new Map([...map1]);
-
-  map2.forEach((value, key) => {
-    if (combinedMap.has(key)) {
-      combinedMap.set(key, combinedMap.get(key) + value);
-    } else {
-      combinedMap.set(key, value);
-    }
-  });
-
-  return combinedMap;
+export function combineMaps(...maps) {
+  return maps.reduce((result, map) => {
+    map.forEach((value, key) =>
+      result.set(key, (result.get(key) || 0) + value)
+    );
+    return result;
+  }, new Map());
 }
