@@ -14,6 +14,7 @@ import RapidFireTeam from "./rapidfire/RapidFireTeam";
 import RapidFireRounds from "./rapidfire/RapidFireRounds";
 import BuzzerTeam from "./buzzer/BuzzerTeam";
 import BuzzerRounds from "./buzzer/BuzzerRounds";
+import FinalResultDisplay from "./FinalResultDisplay";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/rapid_round" element={<RapidFireRounds />} />
         <Route path="/buzzer" element={<BuzzerTeam />} />
         <Route path="/buzzer_round" element={<BuzzerRounds />} />
+        <Route path="/result" element={<FinalResultDisplay />} />
       </Routes>
     </BrowserRouter>
   );

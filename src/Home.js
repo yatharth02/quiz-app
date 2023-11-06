@@ -18,18 +18,19 @@ class Home extends Component {
           </p>
         </div>
         <div className="home_arrow">
-          <img src="home/arrow.png" />
+          <img src="home/arrow.png" className="home_arrows" />
+          <h4 className="home_start">
+            <a className="home_a" href="/flip_book">
+              START
+            </a>
+          </h4>
+          <h4 className="home_rule">
+            <a className="home_a" href="/rules">
+              RULES
+            </a>
+          </h4>
         </div>
-        <h4 className="home_start">
-          <a className="home_a" href="/flip_book">
-            START
-          </a>
-        </h4>
-        <h4 className="home_rule">
-          <a className="home_a" href="/rules">
-            RULES
-          </a>
-        </h4>
+
         <div className="home_car">
           <img src="home/car.png" />
         </div>

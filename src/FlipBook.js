@@ -300,19 +300,8 @@ class FlipBook extends Component {
               <img className="flip_image flip_eight" />
               <p className="flip_back_p">
                 अंतिम परिणाम
-                <Link
-                  className="flip_link"
-                  to="/buzzer"
-                  onClick={() => {
-                    this.setTeamNum(6);
-                  }}
-                  disabled={
-                    sessionStorage.getItem("roundClear_6") === "true"
-                      ? true
-                      : false
-                  }
-                >
-                  दौर 6 शुरू करे
+                <Link className="flip_link_rslt" to="/result">
+                  परिणाम जांचें
                 </Link>
               </p>
               <label className="flip_back-btn" htmlFor="flip_c7">

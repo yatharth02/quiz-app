@@ -36,10 +36,11 @@ export function randomItem(items) {
 }
 
 export function combineMaps(...maps) {
-  return maps.reduce((result, map) => {
+  var map1 = maps.reduce((result, map) => {
     map.forEach((value, key) =>
-      result.set(key, (result.get(key) || 0) + value)
+      result.set(key, (result.get(key) || 0) + parseInt(value))
     );
     return result;
   }, new Map());
+  return [...map1.entries()].sort((a, b) => b[1] - a[1]);
 }
