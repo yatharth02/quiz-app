@@ -44,7 +44,7 @@ function QuizDesign(props) {
   };
 
   const handleAnswer = (ans) => {
-    const isCorrect = ans === data["Choice-1(Correct Ans)"];
+    const isCorrect = String(ans) === String(data["Choice-1(Correct Ans)"]);
     setNxtQues(isCorrect ? "c" : "w");
 
     if (isCorrect)

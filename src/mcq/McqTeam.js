@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { readData } from "../Helper";
+import { readData, getTeamName } from "../Helper";
 import "./McqTeam.css";
 
 class McqTeam extends Component {
@@ -49,7 +49,7 @@ class McqTeam extends Component {
               this.setQuesNum();
             }}
           >
-            टीम {teamNum} राउंड शुरू करे
+            टीम {getTeamName(teamNum)} राउंड शुरू करे
           </Link>
           <div id="mcq_left-door" className="mcq_door">
             <div className="mcq_shape"></div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { readData } from "../Helper";
+import { readData, getTeamName } from "../Helper";
 import "./VideoTeam.css";
 
 class VideoTeam extends Component {
@@ -75,7 +75,7 @@ class VideoTeam extends Component {
               this.setQuesNum();
             }}
           >
-            टीम {teamNum} राउंड शुरू करे
+            टीम {getTeamName(teamNum)} राउंड शुरू करे
           </Link>
         </div>
       </div>

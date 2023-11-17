@@ -4,6 +4,7 @@ import Timer from "../mcq/McqTimer";
 import Quiz from "./VisualQuiz";
 import PicTimer from "../PicTimer";
 import useSound from "use-sound";
+import { getTeamName } from "../Helper";
 
 class VisualRounds extends Component {
   render() {
@@ -61,27 +62,27 @@ function QuizDetails(props) {
               </thead>
               <tbody className="mcq_rounds_tbody">
                 <tr>
-                  <td>टीम-1</td>
+                  <td>टीम:A-1</td>
                   <td>{totalScoreMap.get("Team-1")}</td>
                 </tr>
                 <tr>
-                  <td>टीम-2</td>
+                  <td>टीम:B-2</td>
                   <td>{totalScoreMap.get("Team-2")}</td>
                 </tr>
                 <tr>
-                  <td>टीम-3</td>
+                  <td>टीम:C-3</td>
                   <td>{totalScoreMap.get("Team-3")}</td>
                 </tr>
                 <tr>
-                  <td>टीम-4</td>
+                  <td>टीम:D-4</td>
                   <td>{totalScoreMap.get("Team-4")}</td>
                 </tr>
                 <tr>
-                  <td>टीम-5</td>
+                  <td>टीम:E-5</td>
                   <td>{totalScoreMap.get("Team-5")}</td>
                 </tr>
                 <tr>
-                  <td>टीम-6</td>
+                  <td>टीम:F-6</td>
                   <td>{totalScoreMap.get("Team-6")}</td>
                 </tr>
               </tbody>
@@ -105,7 +106,7 @@ function QuizDetails(props) {
               to="/visual"
               onClick={() => postRoundCleanup(false)}
             >
-              टीम-{teamNum + 1} के लिए जाएं
+              टीम:{getTeamName(teamNum + 1)} के लिए जाएं
             </Link>
           </>
         )

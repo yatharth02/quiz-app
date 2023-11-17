@@ -44,3 +44,14 @@ export function combineMaps(...maps) {
   }, new Map());
   return [...map1.entries()].sort((a, b) => b[1] - a[1]);
 }
+
+export function getTeamName(teamNum) {
+  let teamDict = {};
+  teamDict[1] = "A-1";
+  teamDict[2] = "B-2";
+  teamDict[3] = "C-3";
+  teamDict[4] = "D-4";
+  teamDict[5] = "E-5";
+  teamDict[6] = "F-6";
+  return teamDict[teamNum];
+}

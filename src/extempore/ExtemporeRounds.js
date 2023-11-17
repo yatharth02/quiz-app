@@ -2,7 +2,7 @@ import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import Timer from "../mcq/McqTimer";
 import PicTimer from "../PicTimer";
-import { randomItem } from "../Helper";
+import { randomItem, getTeamName } from "../Helper";
 import useSound from "use-sound";
 
 class ExtemporeRounds extends Component {
@@ -13,11 +13,11 @@ class ExtemporeRounds extends Component {
       var totalData = JSON.parse(sessionStorage.getItem("data"));
       var tempTotalData = JSON.parse(sessionStorage.getItem("tempTotalData"));
 
-      totalData = tempTotalData
-        ? totalData.filter((val) => !(val in tempTotalData))
+      var filterTotalData = tempTotalData
+        ? totalData.filter((val) => !tempTotalData.includes(val["Choice-1"]))
         : totalData;
 
-      var data = randomItem(totalData);
+      var data = randomItem(filterTotalData);
 
       if (parseInt(quesNum) === 1) sessionStorage.setItem("score", 0);
 
@@ -59,27 +59,27 @@ function QuizDetails(props) {
               </thead>
               <tbody className="mcq_rounds_tbody">
                 <tr>
-                  <td>टीम-1</td>
+                  <td>टीम:A-1</td>
                   <td>{totalScoreMap.get("Team-1")}</td>
                 </tr>
                 <tr>
-                  <td>टीम-2</td>
+                  <td>टीम:B-2</td>
                   <td>{totalScoreMap.get("Team-2")}</td>
                 </tr>
                 <tr>
-                  <td>टीम-3</td>
+                  <td>टीम:C-3</td>
                   <td>{totalScoreMap.get("Team-3")}</td>
                 </tr>
                 <tr>
-                  <td>टीम-4</td>
+                  <td>टीम:D-4</td>
                   <td>{totalScoreMap.get("Team-4")}</td>
                 </tr>
                 <tr>
-                  <td>टीम-5</td>
+                  <td>टीम:E-5</td>
                   <td>{totalScoreMap.get("Team-5")}</td>
                 </tr>
                 <tr>
-                  <td>टीम-6</td>
+                  <td>टीम:F-6</td>
                   <td>{totalScoreMap.get("Team-6")}</td>
                 </tr>
               </tbody>
@@ -103,7 +103,7 @@ function QuizDetails(props) {
               to="/extempore"
               onClick={() => postRoundCleanup(false)}
             >
-              टीम-{teamNum + 1} के लिए जाएं
+              टीम:{getTeamName(teamNum + 1)} के लिए जाएं
             </Link>
           </>
         )
@@ -168,9 +168,9 @@ function provideScore(quesNum, setNxtQues, data, teamNum) {
   var tempTotalData = JSON.parse(sessionStorage.getItem("tempTotalData"));
 
   if (tempTotalData) {
-    tempTotalData.push(data);
+    tempTotalData.push(data["Choice-1"]);
   } else {
-    tempTotalData = [data];
+    tempTotalData = [data["Choice-1"]];
   }
   sessionStorage.setItem("tempTotalData", JSON.stringify(tempTotalData));
 
