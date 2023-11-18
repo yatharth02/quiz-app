@@ -16,6 +16,65 @@ class RapidFireRounds extends Component {
   }
 }
 
+function ShowAnswers(props) {
+  var data = props.data;
+  var setShowAns = props.setShowAns;
+  var teamNum = props.teamNum;
+
+  return (
+    <>
+      <div className="mcq_rounds_show_ans">
+        <table>
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((val, index) => {
+              return (
+                <tr key={index}>
+                  {/* className={getClassName(index)}> */}
+                  <td>{val["Questions"]}</td>
+                  <td>{val["Answers"]}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <Link
+        className="mcq_rounds_show_ans_link final"
+        onClick={() => setShowAns(false)}
+      >
+        टीम:{getTeamName(teamNum)} परिणाम दिखाओ
+      </Link>
+    </>
+  );
+}
+
+function getClassName(idx) {
+  let rightAns = JSON.parse(sessionStorage.getItem("rightAns"));
+  let wrongAns = JSON.parse(sessionStorage.getItem("wrongAns"));
+  let skipAns = JSON.parse(sessionStorage.getItem("skipAns"));
+
+  console.log("idx", idx);
+  console.log("rightAns", rightAns[0]);
+  console.log("wrongAns", wrongAns[0]);
+  console.log("skipAns", skipAns[0]);
+
+  if (idx in rightAns) {
+    return "mcq_rounds_show_ans_right";
+  } else if (idx in wrongAns) {
+    return "mcq_rounds_show_ans_wrong";
+  } else if (idx in skipAns) {
+    return "mcq_rounds_show_ans_skip";
+  } else {
+    return "mcq_rounds_show_ans_no";
+  }
+}
+
 function QuizDetails(props) {
   var data = props.data;
   var teamNum = parseInt(sessionStorage.getItem("teamNum"));
@@ -23,6 +82,7 @@ function QuizDetails(props) {
   var [timer, setTimer] = useState("");
   var [quesNum, setQuesNum] = useState(1);
   var [finalSocre, setFinalScore] = useState(false);
+  var [showAns, setShowAns] = useState(true);
 
   var totalScoreMap = new Map(
     JSON.parse(sessionStorage.getItem("rapidTotalScore"))
@@ -78,6 +138,8 @@ function QuizDetails(props) {
               राउंड 6 के लिए जाएं
             </Link>
           </div>
+        ) : showAns ? (
+          <ShowAnswers data={data} setShowAns={setShowAns} teamNum={teamNum} />
         ) : (
           <>
             <div className="mcq_rounds_final">
@@ -158,6 +220,9 @@ function postRoundCleanup(isOver) {
   sessionStorage.removeItem("score");
   sessionStorage.removeItem("data");
   sessionStorage.removeItem("answers");
+  sessionStorage.removeItem("rightAns");
+  sessionStorage.removeItem("wrongAns");
+  sessionStorage.removeItem("skipAns");
 }
 
 export default RapidFireRounds;

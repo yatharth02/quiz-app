@@ -196,6 +196,36 @@ span.mcq_rounds_option {
   margin-left: 36%;
   margin-top: 10%;
 }
+.mcq_rounds_show_ans {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  margin-left: 25%;
+  margin-top: 5%;
+}
+.mcq_rounds_show_ans_link {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  font-size: 36px;
+  background-color: #db1f48;
+  color: #fff;
+  transition: background-color 1s;
+  padding: 15px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin-left: 43%;
+  margin-top: 7%;
+  text-decoration: none;
+}
+.mcq_rounds_show_ans_link.final {
+  margin-top: 34%;
+  margin-left: 37%;
+}
+.mcq_rounds_show_ans_link:hover {
+  background-color: #004369;
+}
 .mcq_rounds_link.final {
   margin-top: 20%;
   margin-left: 40%;
@@ -262,4 +292,32 @@ span.mcq_rounds_option {
 }
 #mcq_rounds_id {
   background: linear-gradient(#438a19, #438a19);
+}
+.mcq_rounds_show_ans_right {
+  background-color: #368209;
+}
+.mcq_rounds_show_ans_wrong {
+  background-color: #82091d;
+}
+.mcq_rounds_show_ans_skip {
+  background-color: #ccb90a;
+}
+.mcq_rounds_show_ans_no {
+  background-color: #0abccc;
+}
+.mcq_rounds_show_ans table {
+  border-collapse: collapse;
+  justify-content: space-around;
+}
+.mcq_rounds_show_ans thead {
+  background-color: #333;
+  color: white;
+  font-size: 35px;
+  text-transform: uppercase;
+  letter-spacing: 2%;
+}
+.mcq_rounds_show_ans tbody {
+  font-size: 25px;
+  letter-spacing: 5%;
+  text-align: center;
 }

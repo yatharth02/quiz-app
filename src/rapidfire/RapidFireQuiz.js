@@ -17,6 +17,19 @@ class Quiz extends Component {
     );
   }
 }
+function setResultVal(key, quesNum) {
+  if (sessionStorage.getItem(key)) {
+    let arr = JSON.parse(sessionStorage.getItem(key));
+    arr.push(quesNum);
+    return arr;
+  } else {
+    return [quesNum];
+  }
+}
+
+function setAnsResult(key, quesNum) {
+  sessionStorage.setItem(key, JSON.stringify(setResultVal(key, quesNum)));
+}
 
 function QuizDesign(props) {
   var data = props.data;
@@ -31,6 +44,13 @@ function QuizDesign(props) {
         "score",
         parseInt(sessionStorage.getItem("score")) + data["Marks"]
       );
+    }
+    if (ans === "RIGHT") {
+      setAnsResult("rightAns", quesNum - 1);
+    } else if (ans === "WRONG") {
+      setAnsResult("wrongAns", quesNum - 1);
+    } else if (ans === "SKIP") {
+      setAnsResult("skipAns", quesNum - 1);
     }
     setQuesNum(quesNum + 1);
   };

@@ -5,9 +5,11 @@ class Quiz extends Component {
   render() {
     return (
       <div className="mcq_rounds_quiz">
-        <div className="mcq_rounds_question">
-          {this.props.data["Questions"]}
-        </div>
+        {this.props.nxtQues ? (
+          <div className="mcq_rounds_question">
+            {this.props.data["Questions"]}
+          </div>
+        ) : null}
         <div className="buzzer_rounds_answers">
           <QuizDesign
             data={this.props.data}
