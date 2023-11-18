@@ -11,7 +11,7 @@ class Home extends Component {
           <p>
             State Level Quiz Competition
             <br />
-            2022
+            2023
             <br />
             Dehradun - Uttarakhand
             <br />
@@ -37,6 +37,14 @@ class Home extends Component {
         <div className="home_wheel">
           <img src="home/wheel.png" className="home_back" />
           <img src="home/wheel.png" className="home_front" />
+        </div>
+        <div className="home_creation">
+          <p>
+            Innovated By:- Devanand Deoli, State Coordinator, GK Quiz
+            Competition. Contact: 9897077226
+            <br />
+            Developed By:- Yatharth Deoly, Developer
+          </p>
         </div>
       </div>
     );

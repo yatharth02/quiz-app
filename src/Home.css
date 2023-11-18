@@ -104,7 +104,7 @@
   margin: 0 auto;
   width: 70%;
   height: 200px;
-  font-size: 36px;
+  font-size: 46px;
   font-family: "Rubik Storm", cursive;
   font-family: "Unbounded", cursive;
   position: absolute;
@@ -117,6 +117,26 @@
   color: transparent;
 }
 
+.home_creation {
+  z-index: 5;
+  margin: 0 auto;
+  width: 90%;
+  font-size: 20px;
+  font-family: "Rubik Storm", cursive;
+  font-family: "Unbounded", cursive;
+  position: absolute;
+  left: 5%;
+  bottom: 10px;
+  text-align: center;
+  text-shadow: whitesmoke 0.1px 5px 70px;
+  background-image: repeating-radial-gradient(
+    circle at center,
+    rgb(255, 0, 0) 40%,
+    red
+  );
+  background-clip: text;
+  color: transparent;
+}
 .home_arrow {
   position: absolute;
   left: 80%;
