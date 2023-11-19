@@ -92,52 +92,60 @@ function QuizDetails(props) {
     <div className="mcq_rounds_main">
       {timer === "timeout" && finalSocre ? (
         teamNum === 6 ? (
-          <div className="mcq_rounds_table_div">
-            <table className="mcq_rounds_table">
-              <caption className="mcq_rounds_caption">
-                रैपिड फायर राउण्ड स्कोर
-              </caption>
-              <thead className="mcq_rounds_thead">
-                <tr>
-                  <th>टीम</th>
-                  <th>स्कोर</th>
-                </tr>
-              </thead>
-              <tbody className="mcq_rounds_tbody">
-                <tr>
-                  <td>टीम:A-1</td>
-                  <td>{totalScoreMap.get("Team-1")}</td>
-                </tr>
-                <tr>
-                  <td>टीम:B-2</td>
-                  <td>{totalScoreMap.get("Team-2")}</td>
-                </tr>
-                <tr>
-                  <td>टीम:C-3</td>
-                  <td>{totalScoreMap.get("Team-3")}</td>
-                </tr>
-                <tr>
-                  <td>टीम:D-4</td>
-                  <td>{totalScoreMap.get("Team-4")}</td>
-                </tr>
-                <tr>
-                  <td>टीम:E-5</td>
-                  <td>{totalScoreMap.get("Team-5")}</td>
-                </tr>
-                <tr>
-                  <td>टीम:F-6</td>
-                  <td>{totalScoreMap.get("Team-6")}</td>
-                </tr>
-              </tbody>
-            </table>
-            <Link
-              className="mcq_rounds_link table"
-              to="/flip_book"
-              onClick={() => postRoundCleanup(true)}
-            >
-              राउंड 6 के लिए जाएं
-            </Link>
-          </div>
+          showAns ? (
+            <ShowAnswers
+              data={data}
+              setShowAns={setShowAns}
+              teamNum={teamNum}
+            />
+          ) : (
+            <div className="mcq_rounds_table_div">
+              <table className="mcq_rounds_table">
+                <caption className="mcq_rounds_caption">
+                  रैपिड फायर राउण्ड स्कोर
+                </caption>
+                <thead className="mcq_rounds_thead">
+                  <tr>
+                    <th>टीम</th>
+                    <th>स्कोर</th>
+                  </tr>
+                </thead>
+                <tbody className="mcq_rounds_tbody">
+                  <tr>
+                    <td>टीम:A-1</td>
+                    <td>{totalScoreMap.get("Team-1")}</td>
+                  </tr>
+                  <tr>
+                    <td>टीम:B-2</td>
+                    <td>{totalScoreMap.get("Team-2")}</td>
+                  </tr>
+                  <tr>
+                    <td>टीम:C-3</td>
+                    <td>{totalScoreMap.get("Team-3")}</td>
+                  </tr>
+                  <tr>
+                    <td>टीम:D-4</td>
+                    <td>{totalScoreMap.get("Team-4")}</td>
+                  </tr>
+                  <tr>
+                    <td>टीम:E-5</td>
+                    <td>{totalScoreMap.get("Team-5")}</td>
+                  </tr>
+                  <tr>
+                    <td>टीम:F-6</td>
+                    <td>{totalScoreMap.get("Team-6")}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <Link
+                className="mcq_rounds_link table"
+                to="/flip_book"
+                onClick={() => postRoundCleanup(true)}
+              >
+                राउंड 6 के लिए जाएं
+              </Link>
+            </div>
+          )
         ) : showAns ? (
           <ShowAnswers data={data} setShowAns={setShowAns} teamNum={teamNum} />
         ) : (
