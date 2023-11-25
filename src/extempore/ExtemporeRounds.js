@@ -128,6 +128,7 @@ function QuizDetails(props) {
 
           {nxtPic === "True" ? (
             <>
+              {nxtQues !== "t" ? letsPlay() : null}
               <div className="mcq_rounds_top">
                 <Timer
                   time={data["TimeLimit(in sec)"]}
@@ -139,9 +140,7 @@ function QuizDetails(props) {
                 <div className="extempore_bottom">
                   <button
                     className="extempore_btn"
-                    onClick={() =>
-                      provideScore(quesNum, setNxtQues, data, teamNum)
-                    }
+                    onClick={() => provideScore(quesNum, data, teamNum)}
                   >
                     Provide Score
                   </button>
@@ -149,20 +148,13 @@ function QuizDetails(props) {
               </div>
             </>
           ) : null}
-
-          {nxtQues ? (
-            <div className="mcq_rounds_gif">
-              <img src="mcq\dance-emoji.gif" />
-            </div>
-          ) : null}
         </>
       )}
     </div>
   );
 }
 
-function provideScore(quesNum, setNxtQues, data, teamNum) {
-  setNxtQues("c");
+function provideScore(quesNum, data, teamNum) {
   sessionStorage.setItem("quesNum", parseInt(quesNum) + 1);
 
   var tempTotalData = JSON.parse(sessionStorage.getItem("tempTotalData"));
