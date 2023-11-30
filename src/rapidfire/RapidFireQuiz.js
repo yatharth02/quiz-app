@@ -46,11 +46,11 @@ function QuizDesign(props) {
       );
     }
     if (ans === "RIGHT") {
-      setAnsResult("rightAns", quesNum - 1);
+      setAnsResult("rightAns", quesNum);
     } else if (ans === "WRONG") {
-      setAnsResult("wrongAns", quesNum - 1);
+      setAnsResult("wrongAns", quesNum);
     } else if (ans === "SKIP") {
-      setAnsResult("skipAns", quesNum - 1);
+      setAnsResult("skipAns", quesNum);
     }
     setQuesNum(quesNum + 1);
   };

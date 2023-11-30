@@ -32,10 +32,12 @@ function ShowAnswers(props) {
             </tr>
           </thead>
           <tbody>
-            {data.map((val, index) => {
+            {data.map((val) => {
               return (
-                <tr key={index}>
-                  {/* className={getClassName(index)}> */}
+                <tr
+                  key={val["Q.No."]}
+                  className={getClassName(parseInt(val["Q.No."].substring(1)))}
+                >
                   <td>{val["Questions"]}</td>
                   <td>{val["Answers"]}</td>
                 </tr>
@@ -43,32 +45,39 @@ function ShowAnswers(props) {
             })}
           </tbody>
         </table>
+        <Link
+          className="mcq_rounds_show_ans_link final"
+          onClick={() => setShowAns(false)}
+        >
+          टीम:{getTeamName(teamNum)} परिणाम दिखाओ
+        </Link>
       </div>
-      <Link
-        className="mcq_rounds_show_ans_link final"
-        onClick={() => setShowAns(false)}
-      >
-        टीम:{getTeamName(teamNum)} परिणाम दिखाओ
-      </Link>
+      <div className="mcq_rounds_legend">
+        <dl>
+          <dt class="right"></dt>
+          <dd>Right Answers</dd>
+          <dt class="skip"></dt>
+          <dd>Skipped Answers</dd>
+          <dt class="wrong"></dt>
+          <dd>Wrong Answers</dd>
+          <dt class="no"></dt>
+          <dd>No Answers</dd>
+        </dl>
+      </div>
     </>
   );
 }
 
-function getClassName(idx) {
+function getClassName(qNo) {
   let rightAns = JSON.parse(sessionStorage.getItem("rightAns"));
   let wrongAns = JSON.parse(sessionStorage.getItem("wrongAns"));
   let skipAns = JSON.parse(sessionStorage.getItem("skipAns"));
 
-  console.log("idx", idx);
-  console.log("rightAns", rightAns[0]);
-  console.log("wrongAns", wrongAns[0]);
-  console.log("skipAns", skipAns[0]);
-
-  if (idx in rightAns) {
+  if (rightAns.includes(qNo)) {
     return "mcq_rounds_show_ans_right";
-  } else if (idx in wrongAns) {
+  } else if (wrongAns.includes(qNo)) {
     return "mcq_rounds_show_ans_wrong";
-  } else if (idx in skipAns) {
+  } else if (skipAns.includes(qNo)) {
     return "mcq_rounds_show_ans_skip";
   } else {
     return "mcq_rounds_show_ans_no";

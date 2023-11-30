@@ -200,7 +200,7 @@ span.mcq_rounds_option {
   display: flex;
   justify-content: space-around;
   position: absolute;
-  margin-left: 18%;
+  margin-left: 25%;
   margin-top: 5%;
 }
 .mcq_rounds_show_ans_link {
@@ -220,8 +220,8 @@ span.mcq_rounds_option {
   text-decoration: none;
 }
 .mcq_rounds_show_ans_link.final {
-  margin-top: 34%;
-  margin-left: 37%;
+  margin-top: 50%;
+  margin-left: 0%;
 }
 .mcq_rounds_show_ans_link:hover {
   background-color: #004369;
@@ -320,4 +320,36 @@ span.mcq_rounds_option {
   font-size: 25px;
   letter-spacing: 5%;
   text-align: center;
+}
+.mcq_rounds_legend {
+  display: flex;
+  color: #ccc;
+  background-color: #333;
+  box-shadow: 0 0 15px #000;
+  width: 20%;
+  height: 7%;
+}
+dl dt {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+dl dd {
+  display: inline-block;
+  margin: 0px 10px;
+  padding-bottom: 0;
+  vertical-align: middle;
+}
+dl dt.right {
+  background: #368209;
+}
+dl dt.wrong {
+  background: #82091d;
+}
+dl dt.skip {
+  background: #ccb90a;
+}
+dl dt.no {
+  background: #0abccc;
 }
