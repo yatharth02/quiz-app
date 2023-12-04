@@ -69,9 +69,9 @@ function ShowAnswers(props) {
 }
 
 function getClassName(qNo) {
-  let rightAns = JSON.parse(sessionStorage.getItem("rightAns"));
-  let wrongAns = JSON.parse(sessionStorage.getItem("wrongAns"));
-  let skipAns = JSON.parse(sessionStorage.getItem("skipAns"));
+  let rightAns = JSON.parse(sessionStorage.getItem("rightAns") || "[]");
+  let wrongAns = JSON.parse(sessionStorage.getItem("wrongAns") || "[]");
+  let skipAns = JSON.parse(sessionStorage.getItem("skipAns") || "[]");
 
   if (rightAns.includes(qNo)) {
     return "mcq_rounds_show_ans_right";
